@@ -36,14 +36,14 @@
       z-index: -1;
       transition: var(--transition);
     }
+  }
 
-    &:nth-of-type(1) span {
-      margin-left: 5.52px;
-    }
+  &:nth-of-type(1) button span {
+    margin-left: 4px;
+  }
 
-    &:nth-of-type(2) span {
-      margin-left: 9px;
-    }
+  &:nth-of-type(2) button span {
+    margin-left: 9px;
   }
 
   &.btnActive button::before {

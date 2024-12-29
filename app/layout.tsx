@@ -3,7 +3,8 @@ import { Exo, Exo_2 } from 'next/font/google'
 import localFont from 'next/font/local'
 import cn from 'classnames'
 
-import { Header } from '@/widgets/header'
+import { AuthModalProvider, AuthProvider, QueryClientProvider, UserProvider } from '@/app/providers'
+import { PageLayout } from '@/widgets/layout'
 
 import '@/app/styles/reset.css'
 import '@/app/styles/variables.css'
@@ -37,9 +38,15 @@ export default function RootLayout({
   return (
     <html lang='ru'>
       <body className={cn(fontExo.variable, fontExo2.variable, fontRepublicaMinor.variable)}>
-        <Header />
-
-        {children}
+        <QueryClientProvider>
+          <AuthProvider>
+            <UserProvider>
+              <AuthModalProvider>
+                <PageLayout>{children}</PageLayout>
+              </AuthModalProvider>
+            </UserProvider>
+          </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   )

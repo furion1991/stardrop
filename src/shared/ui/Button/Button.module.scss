@@ -1,0 +1,33 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gradient-pink);
+  border-radius: var(--button-br-normal);
+  padding: 10px;
+  font-family: var(--font-exo2);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 19px;
+  text-transform: uppercase;
+
+  &.brMedium {
+    border-radius: var(--button-br-medium);
+  }
+
+  &.purple {
+    background: var(--gradient-purple);
+  }
+
+  &.aqua {
+    background: var(--gradient-cyan);
+  }
+
+  &.boxShadow {
+    box-shadow: var(--button-box-shadow);
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+}

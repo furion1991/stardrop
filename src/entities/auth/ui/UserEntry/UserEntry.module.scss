@@ -1,0 +1,60 @@
+.userEntry {
+  display: flex;
+}
+
+.authBtn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 19px;
+  line-height: 19px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  min-width: 200px;
+  padding: 8px 12px;
+  border-radius: 25px;
+  background: #353ba8;
+  box-shadow: 0px 16px 13.7px -10px rgba(0, 0, 0, 0.2);
+}
+
+.balanceUpLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(92, 32, 124, 0.75);
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 61px;
+  height: 61px;
+  border-radius: 15px;
+  background: linear-gradient(180deg, rgb(254, 128, 255), rgba(76, 78, 234, 0.302));
+  box-sizing: border-box;
+
+  img {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(27, 29, 90, 0.4);
+  }
+}

@@ -1,3 +1,95 @@
-.main {
+.mainPage {
   display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 807px;
+}
+
+.content {
+  padding: 0 80px;
+}
+
+.bgImage {
+  position: absolute;
+  top: -105px;
+  width: 100%;
+  height: 1080px;
+}
+
+.headerTitle {
+  position: relative;
+  margin-top: 174px;
+}
+
+.tryNewModeBtn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  margin: 25px auto 0;
+  padding: 7px 8.7px 8.14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.31);
+
+  button {
+    position: relative;
+    padding: 18px 34px 22px;
+    border-radius: 20px;
+    border-top: 4px solid #fe80ff;
+    background: linear-gradient(180deg, #e171e3 0%, #8332ed 100%);
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 30px;
+    box-sizing: border-box;
+  }
+}
+
+.popularCases,
+.heroicBundles {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &List {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 328px);
+    row-gap: 40px;
+    width: 100%;
+    margin-top: 50px;
+    justify-content: space-between;
+  }
+}
+
+.heroicBundles {
+  margin-top: 100px;
+}
+
+.sectionHeading {
+  h4 {
+    font-family: var(--font-exo2);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 36px;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #a7acee;
+  }
+}
+
+.totalStatistics {
+  margin-top: 145px;
 }

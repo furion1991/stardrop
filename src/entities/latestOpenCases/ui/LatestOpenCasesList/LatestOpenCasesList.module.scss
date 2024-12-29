@@ -1,4 +1,8 @@
-.LatestOpenCasesList {
+.latestOpenCasesList {
   display: flex;
   gap: 2px;
+
+  & > div {
+    flex-shrink: 0;
+  }
 }

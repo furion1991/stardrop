@@ -1,0 +1,85 @@
+.footer {
+  position: relative;
+  margin-top: auto;
+  padding: 130px 90px 77px;
+  background: var(--footer-bg-gradient);
+  color: #82b3ff;
+  overflow: hidden;
+}
+
+.topLine {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 40px;
+
+  li {
+    a {
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.socialNetworksList {
+  margin-top: 27px;
+}
+
+.topRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.logo {
+  display: flex;
+  gap: 18px;
+
+  span {
+    padding-top: 17px;
+    font-family: var(--font-exo2);
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 14px;
+    color: #fff;
+  }
+}
+
+.bottomLine {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 41px;
+}
+
+.companyCredentialsText {
+  max-width: 530px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+}
+
+.collaborationBtn {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 19px 22px 17px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: none;
+  background: linear-gradient(180deg, #3658f7 0%, #5541c2 100%);
+}
+
+.bgCharacter {
+  position: absolute;
+  left: 45%;
+  bottom: -3px;
+}

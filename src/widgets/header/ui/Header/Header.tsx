@@ -3,7 +3,8 @@ import Image from 'next/image'
 
 import { LatestOpenCasesFilter } from '@/features/latestOpenCases'
 import { LatestOpenCasesList } from '@/entities/latestOpenCases'
-import { CurrentOnlineNumber } from '@/entities/onlineStats'
+import { CurrentOnlineNumber } from '@/entities/stats'
+import { UserEntry } from '@/entities/auth'
 import { Logo, SocialNetworksLinksList } from '@/shared/ui'
 
 import { NavList } from '../NavList/NavList'
@@ -15,10 +16,12 @@ export const Header = () => {
     <header className={classes.header}>
       <div className={classes.topLine}>
         <div className={classes.logo}>
-          <Logo />
+          <Logo withShadow />
         </div>
 
-        <LatestOpenCasesFilter />
+        <div className={classes.latestOpenCasesFilter}>
+          <LatestOpenCasesFilter />
+        </div>
 
         <div className={classes.latestOpenCasesList}>
           <LatestOpenCasesList />
@@ -46,7 +49,9 @@ export const Header = () => {
             <SocialNetworksLinksList />
           </div>
 
-          <div className={classes.userEntry}>Войти</div>
+          <div className={classes.userEntry}>
+            <UserEntry />
+          </div>
         </div>
       </div>
     </header>
