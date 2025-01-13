@@ -1,0 +1,23 @@
+.casePage {
+  position: relative;
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 1486px;
+  width: 100%;
+  margin: 72px auto 0;
+}
+
+.linkBack {
+  position: absolute;
+  left: 50px;
+  margin-top: 9px;
+}
+
+.soundBtn {
+  position: absolute;
+  right: 62px;
+  display: flex;
+  margin-top: 19px;
+}

@@ -11,6 +11,10 @@
   line-height: 19px;
   text-transform: uppercase;
 
+  &:disabled {
+    cursor: default;
+  }
+
   &.brMedium {
     border-radius: var(--button-br-medium);
   }
@@ -19,7 +23,7 @@
     background: var(--gradient-purple);
   }
 
-  &.aqua {
+  &.cyan {
     background: var(--gradient-cyan);
   }
 

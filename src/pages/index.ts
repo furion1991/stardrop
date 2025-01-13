@@ -1,4 +1,6 @@
 import { MainPage } from './Main/Main'
-import { InventoryPage } from './Inventory/Inventory'
+import { ProfilePage } from './Profile/Profile'
+import { AuthRequiredPage } from './AuthRequired/AuthRequired'
+import { CasePage } from './CasePage/CasePage'
 
-export { MainPage, InventoryPage }
+export { MainPage, ProfilePage, AuthRequiredPage, CasePage }

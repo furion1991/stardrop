@@ -1,6 +1,7 @@
 import { LastOpenedCaseItem } from '../LastOpenedCaseItem/LastOpenedCaseItem'
 
-import { type OpenedCase, LootRarity } from '../../types/latestOpenCases.types'
+import type { OpenedCase } from '../../types/latestOpenCases.types'
+import { LootRarity } from '@/entities/loot'
 
 import classes from './LatestOpenCasesList.module.scss'
 

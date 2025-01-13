@@ -26,7 +26,9 @@ export const NavList = () => {
     {
       label: 'Апгрейд',
       href: '/',
-      image: <Image src='/icons/upgrade.svg' width={22} height={22} alt='Улучшение' priority />
+      image: (
+        <Image src='/icons/upgrade-double.svg' width={22} height={22} alt='Улучшение' priority />
+      )
     },
     {
       label: 'Барабан',

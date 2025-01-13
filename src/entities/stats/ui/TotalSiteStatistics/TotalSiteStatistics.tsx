@@ -12,17 +12,17 @@ export const TotalSiteStatistics = () => {
     {
       label: 'Открыто кейсов',
       number: 9780,
-      icon: <Image src='/icons/chest.svg' width={100} height={100} alt='Пользователь' />
+      icon: <Image src='/icons/chest.svg' width={100} height={100} alt='Сундук' />
     },
     {
       label: 'Сделано апгрейдов',
       number: 9780,
-      icon: <Image src='/icons/upgrade-2.svg' width={100} height={100} alt='Пользователь' />
+      icon: <Image src='/icons/upgrade-double.svg' width={100} height={100} alt='Апгрейд' />
     },
     {
       label: 'Создано контрактов',
       number: 9780,
-      icon: <Image src='/icons/medal-big.svg' width={100} height={100} alt='Пользователь' />
+      icon: <Image src='/icons/medal-big.svg' width={100} height={100} alt='Медаль' />
     }
   ]
 

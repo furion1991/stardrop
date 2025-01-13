@@ -23,6 +23,7 @@ a {
 }
 
 button {
+  font-family: var(--font-exo);
   color: #fff;
   cursor: pointer;
   padding: 0;

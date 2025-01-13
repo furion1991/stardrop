@@ -1,0 +1,24 @@
+.inventoryLootActions {
+  display: flex;
+
+  button {
+    padding: 17px 26.5px;
+    font-size: 18px;
+    line-height: 16px;
+
+    &:nth-of-type(1) {
+      margin-left: 50px;
+    }
+
+    &:nth-of-type(2) {
+      margin-left: 15px;
+    }
+  }
+}
+
+.canSellFilter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+}

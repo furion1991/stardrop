@@ -1,11 +1,4 @@
-export enum LootRarity {
-  COMMON = 'common',
-  RARE = 'rare',
-  SUPER_RARE = 'super-rare',
-  EPIC = 'epic',
-  MYTHICAL = 'mythical',
-  LEGENDARY = 'legendary'
-}
+import { LootRarity } from '@/entities/loot'
 
 export type OpenedCase = {
   id: number

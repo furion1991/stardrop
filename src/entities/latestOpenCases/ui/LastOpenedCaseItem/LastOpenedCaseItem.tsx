@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import cn from 'classnames'
 
-import { LootRarity, type OpenedCase } from '../../types/latestOpenCases.types'
+import type { OpenedCase } from '../../types/latestOpenCases.types'
+import { LootRarity } from '@/entities/loot'
 
 import classes from './LastOpenedCaseItem.module.scss'
 

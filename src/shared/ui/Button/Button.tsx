@@ -34,6 +34,7 @@ export const Button = ({
         [classes.brMedium]: borderRadius === 'medium',
         [classes.fullWidth]: fullWidth
       })}
+      disabled={loading}
       {...props}
     >
       {loading ? <Spinner /> : children}

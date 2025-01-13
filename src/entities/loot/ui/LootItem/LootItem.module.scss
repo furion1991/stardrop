@@ -1,0 +1,38 @@
+.lootItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 18px;
+  padding: 12px 12px 23px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.topLine {
+  display: flex;
+  width: 100%;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16.75px;
+  font-weight: 900;
+  margin-left: auto;
+}
+
+.image {
+  margin-top: 14px;
+}
+
+.game {
+  margin-top: 14.59px;
+  font-weight: 500;
+}
+
+.name {
+  text-align: center;
+  margin-top: 6px;
+  font-weight: 700;
+}
