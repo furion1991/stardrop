@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import cn from 'classnames'
+import { Suspense } from 'react'
 
 import { AuthModalProvider, AuthProvider, QueryClientProvider, UserProvider } from '@/app/providers'
 import { PageLayout } from '@/widgets/layout'
@@ -24,11 +25,13 @@ export default function RootLayout({
       <body className={cn(fontExo.variable, fontExo2.variable, fontRepublicaMinor.variable)}>
         <QueryClientProvider>
           <AuthProvider>
-            <UserProvider>
-              <AuthModalProvider>
-                <PageLayout>{children}</PageLayout>
-              </AuthModalProvider>
-            </UserProvider>
+            <Suspense>
+              <UserProvider>
+                <AuthModalProvider>
+                  <PageLayout>{children}</PageLayout>
+                </AuthModalProvider>
+              </UserProvider>
+            </Suspense>
           </AuthProvider>
         </QueryClientProvider>
       </body>

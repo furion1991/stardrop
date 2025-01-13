@@ -1,11 +1,14 @@
+import Image from 'next/image'
+
 import { Case } from '@/widgets/cases'
 import { LinkBack } from '@/shared/ui'
 
 import classes from './CasePage.module.scss'
-import Image from 'next/image'
 
-export const CasePage = ({ params }: { params: { id: string } }) => {
-  const { id: caseId } = params
+export type ParamsType = Promise<{ id: string }>
+
+export const CasePage = async ({ params }: { params: ParamsType }) => {
+  const { id: caseId } = await params
 
   if (!caseId) return null
 

@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       }
     ]
   },
+
   experimental: {
     turbo: {
       rules: {
