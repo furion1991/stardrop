@@ -14,7 +14,14 @@ export const HeroicBundlesCasesList = () => {
     <>
       {casesList.map(({ id, name, price, oldPrice }) => {
         return (
-          <CasePreview key={id} name={name} price={price} oldPrice={oldPrice} openLimit={1000} />
+          <CasePreview
+            key={id}
+            name={name}
+            price={price}
+            oldPrice={oldPrice}
+            openLimit={1000}
+            openedCasesNumber={0}
+          />
         )
       })}
     </>
