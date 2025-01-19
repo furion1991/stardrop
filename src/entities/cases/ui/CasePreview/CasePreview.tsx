@@ -11,6 +11,7 @@ type CasePreviewProps = {
   price: number
   oldPrice: number
   openLimit: number
+  openedCasesNumber: number
 }
 
 export const CasePreview = ({
@@ -18,9 +19,9 @@ export const CasePreview = ({
   image = '/placeholders/case.png',
   price,
   oldPrice,
-  openLimit
+  openLimit,
+  openedCasesNumber
 }: CasePreviewProps) => {
-  const openedCasesNumber = 500
   const limitFillInPercentage = Number(Number((openedCasesNumber / openLimit) * 100).toFixed(2))
 
   return (
@@ -39,6 +40,8 @@ export const CasePreview = ({
             [classes.fillGradientFull]: limitFillInPercentage === 100
           })}
           style={{
+            // if percent lower than 7 styles will broke
+            display: limitFillInPercentage > 7 ? 'block' : 'none',
             width: `${limitFillInPercentage}%`
           }}
         />
