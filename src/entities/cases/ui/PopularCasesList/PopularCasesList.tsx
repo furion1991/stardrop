@@ -7,14 +7,14 @@ import { CasePreview } from '../CasePreview/CasePreview'
 import { useCases } from '../../model/useCases'
 
 export const PopularCasesList = () => {
-  const { data: cases, isLoading: isCasesLoading } = useCases({
+  const { data: casesData, isLoading: isCasesLoading } = useCases({
     // page: 1,
     // pageItems: 4
   })
 
   return (
     <>
-      {cases?.map(({ id, name, image, price, oldPrice, openLimit }) => {
+      {casesData?.cases?.map(({ id, name, image, price, oldPrice, currentOpen, openLimit }) => {
         return (
           <Link key={id} href={`/cases/${id}`}>
             <CasePreview
@@ -23,6 +23,7 @@ export const PopularCasesList = () => {
               price={price}
               oldPrice={oldPrice}
               openLimit={openLimit}
+              openedCasesNumber={currentOpen}
             />
           </Link>
         )
