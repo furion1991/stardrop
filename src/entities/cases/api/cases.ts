@@ -1,9 +1,9 @@
 import { API } from '@/shared/api'
 
-import type { Case, GetAllCasesProps } from './cases.types'
+import type { Case, CasesResponse, GetAllCasesProps } from './cases.types'
 
 export const getAllCases = async ({ page, pageItems }: GetAllCasesProps) => {
-  const { data } = await API.get<Case[]>('/cases/getall', {
+  const { data } = await API.get<CasesResponse>('/cases/getall', {
     params: {
       Page: page,
       Count: pageItems

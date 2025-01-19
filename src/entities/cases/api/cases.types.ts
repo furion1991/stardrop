@@ -4,6 +4,7 @@ export type Case = {
   image: string
   type: number
   price: number
+  currentOpen: number
   openLimit: number
   discount: number
   oldPrice: number
@@ -21,6 +22,11 @@ export type CaseItem = {
   dropChance: number | null
   game: string
   image: string
+}
+
+export type CasesResponse = {
+  cases: Case[]
+  count: number
 }
 
 export type GetAllCasesProps = {
