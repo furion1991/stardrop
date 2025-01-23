@@ -6,7 +6,7 @@ const API_BASE =
   process.env.NODE_ENV === 'development' ? `/v1` : `${process.env.NEXT_PUBLIC_API_BASE}/v1`
 
 export const API = axios.create({
-  baseURL: API_BASE,
+  baseURL: '/v1',
   withCredentials: true
 })
 
