@@ -16,7 +16,7 @@ export const WithdrawnItemsList = () => {
   ]
 
   return (
-    <div>
+    <div className={classes.withdrawnItemsList}>
       <ul className={classes.list}>
         {withdrawnItems.map(({ id, status }) => {
           return (

@@ -1,0 +1,28 @@
+.superBonusWord {
+  display: flex;
+  gap: 7px;
+}
+
+.letterField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 30px;
+  background: #141949;
+
+  span {
+    font-size: 82px;
+    font-weight: 900;
+    color: #1a1f56;
+    text-shadow: 1px 1px 0px #373b64;
+  }
+
+  &.activated {
+    span {
+      color: #fff;
+      text-shadow: none;
+    }
+  }
+}

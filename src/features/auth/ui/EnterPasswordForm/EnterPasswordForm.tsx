@@ -14,12 +14,14 @@ const schema = z.object({
 type FormSchema = z.infer<typeof schema>
 
 type EnterPasswordFormProps = {
+  error?: string
   loading: boolean
   onPasswordSubmit: (password: string) => void
   onPasswordReset: () => void
 }
 
 export const EnterPasswordForm = ({
+  error,
   loading,
   onPasswordSubmit,
   onPasswordReset
@@ -60,8 +62,8 @@ export const EnterPasswordForm = ({
           Забыли свой пароль?
         </button>
 
-        {passwordError ? (
-          <div className={authModalBaseClasses.formError}>{passwordError}</div>
+        {passwordError || error ? (
+          <div className={authModalBaseClasses.formError}>{passwordError || error}</div>
         ) : null}
       </form>
     </FormProvider>

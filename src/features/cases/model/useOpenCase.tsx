@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { openCase } from '../api/cases'
 
 type UseOpenCaseProps = {
-  onSuccess: ({ recievedItemId }: { recievedItemId: string }) => void
+  onSuccess: ({ droppedLootItemId }: { droppedLootItemId: string }) => void
 }
 
 export const useOpenCase = ({ onSuccess }: UseOpenCaseProps) => {
@@ -17,8 +17,8 @@ export const useOpenCase = ({ onSuccess }: UseOpenCaseProps) => {
       queryClient.invalidateQueries({
         queryKey: ['me']
       })
-      const recievedItemId = data.result
-      onSuccess({ recievedItemId })
+      const droppedLootItemId = data.result
+      onSuccess({ droppedLootItemId })
     }
   })
 }

@@ -1,0 +1,16 @@
+.caseBeforeOpen {
+  display: flex;
+}
+
+.caseOpeningCondition {
+  position: relative;
+  margin: -40px auto 0;
+  width: 396px;
+  z-index: 10;
+}
+
+.caseOpenActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}

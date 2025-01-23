@@ -5,6 +5,15 @@
   align-items: center;
 }
 
+.image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 315px;
+  height: 315px;
+}
+
 .caseOpenLimits {
   position: absolute;
   top: calc(260px + 16px /* half of inner height */);
@@ -40,6 +49,7 @@
 
 .name {
   margin-top: 14.36px;
+  font-family: var(--font-exo2);
   font-size: 18px;
   font-weight: 700;
   text-align: center;

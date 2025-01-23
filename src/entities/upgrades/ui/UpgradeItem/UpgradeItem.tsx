@@ -29,7 +29,6 @@ export const UpgradeItem = ({ result }: UpgradeItemProps) => {
           price={980}
           game='Melinor'
           name='Starned Corbem'
-          imageSize={{ width: 123, height: 62 }}
         />
 
         <Image
@@ -49,7 +48,6 @@ export const UpgradeItem = ({ result }: UpgradeItemProps) => {
           price={1980}
           game='Melinor'
           name='Starned Corbem'
-          imageSize={{ width: 123, height: 62 }}
         />
       </div>
 

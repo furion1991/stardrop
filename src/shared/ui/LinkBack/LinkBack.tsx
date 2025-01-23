@@ -6,7 +6,7 @@ import cn from 'classnames'
 import classes from './LinkBack.module.scss'
 
 type LinkBackProps = {
-  className: string
+  className?: string
 }
 
 export const LinkBack = ({ className }: LinkBackProps) => {

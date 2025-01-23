@@ -1,27 +1,84 @@
-import Image from 'next/image'
+'use client'
 
-import { Case } from '@/widgets/cases'
+import Image from 'next/image'
+import { useState } from 'react'
+import { useParams } from 'next/navigation'
+
+import { CaseLootList, CaseBeforeOpen, CaseAfterOpen } from '@/widgets/cases'
 import { LinkBack } from '@/shared/ui'
+
+import { useCase } from '@/entities/cases'
+import { useUser } from '@/shared/hooks/useUser'
+import { useOpenCase } from '@/features/cases'
 
 import classes from './CasePage.module.scss'
 
-export type ParamsType = Promise<{ id: string }>
+export const CasePage = () => {
+  const params = useParams<{ id: string }>()
+  const caseId = params?.id
 
-export const CasePage = async ({ params }: { params: ParamsType }) => {
-  const { id: caseId } = await params
+  const { user } = useUser()
+  const [droppedLootItemId, setDroppedLootItemId] = useState('')
+  const { data: caseData, isLoading: isCaseLoading } = useCase({ id: caseId ?? '' })
 
-  if (!caseId) return null
+  const { mutate: openCase, isPending: isCaseOpening } = useOpenCase({
+    onSuccess: ({ droppedLootItemId }) => {
+      setDroppedLootItemId(droppedLootItemId)
+    }
+  })
+
+  const handleCaseOpen = () => {
+    if (!caseId || !user) return
+
+    openCase({ caseId, userId: user.id })
+  }
 
   return (
     <div className={classes.casePage}>
-      <LinkBack className={classes.linkBack} />
+      <div className={classes.topActions}>
+        <LinkBack />
 
-      <button type='button' className={classes.soundBtn}>
-        <Image src='/icons/sound.svg' width={26} height={25} alt='Звук' />
-      </button>
+        <button type='button' className={classes.soundBtn}>
+          <Image src='/icons/sound.svg' width={26} height={25} alt='Звук' />
+        </button>
+      </div>
 
       <div className={classes.wrapper}>
-        <Case id={caseId} />
+        <div className={classes.title}>
+          <h1>{caseData?.name}</h1>
+          <p>Кейс</p>
+        </div>
+
+        {caseId && caseData ? (
+          <div className={classes.caseOpen}>
+            {!droppedLootItemId ? (
+              <CaseBeforeOpen
+                caseData={{
+                  id: caseId,
+                  name: caseData.name,
+                  openPrice: caseData.price,
+                  image: caseData.image
+                }}
+                onCaseOpen={handleCaseOpen}
+                onCaseQuickOpen={handleCaseOpen}
+              />
+            ) : (
+              <CaseAfterOpen
+                caseId={caseId}
+                droppedItemId={droppedLootItemId}
+                onCaseReopen={handleCaseOpen}
+              />
+            )}
+          </div>
+        ) : null}
+
+        <section className={classes.caseLoot}>
+          <h2>Содержимое кейса</h2>
+
+          <div className={classes.caseLootList}>
+            {caseData ? <CaseLootList loot={caseData.items} /> : null}
+          </div>
+        </section>
       </div>
     </div>
   )

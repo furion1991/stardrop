@@ -6,13 +6,11 @@ import { getCaseItem } from '../api/loot'
 
 type UseCaseItemProps = {
   itemId: string
-  enabled: boolean
 }
 
-export const useCaseItem = ({ itemId, enabled }: UseCaseItemProps) => {
+export const useCaseItem = ({ itemId }: UseCaseItemProps) => {
   return useQuery({
     queryKey: ['case-item', itemId],
-    queryFn: () => getCaseItem(itemId),
-    enabled
+    queryFn: () => getCaseItem(itemId)
   })
 }

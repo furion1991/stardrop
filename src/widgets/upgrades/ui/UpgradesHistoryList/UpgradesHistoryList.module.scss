@@ -1,0 +1,8 @@
+.upgradesHistoryList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 447px);
+  gap: 25px 19px;
+  width: 100%;
+  padding: 30px 35px 35px;
+  box-sizing: border-box;
+}

@@ -7,3 +7,9 @@ export const getMe = async () => {
 
   return data.result
 }
+
+export const getUserById = async (userId: string) => {
+  const { data } = await API.get<UserResponse>(`/users/id/${userId}`)
+
+  return data.result
+}

@@ -27,7 +27,14 @@ export const CasePreview = ({
   return (
     <div className={classes.casePreview}>
       <div className={classes.image}>
-        <Image src={image} width={328} height={315} alt={`Кейс ${name}`} />
+        <Image
+          src={image}
+          alt={`Кейс ${name}`}
+          fill
+          style={{
+            objectFit: 'contain'
+          }}
+        />
       </div>
 
       <div className={classes.caseOpenLimits}>

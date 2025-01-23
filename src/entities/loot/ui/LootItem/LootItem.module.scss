@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   border-radius: 18px;
-  padding: 12px 12px 23px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -23,16 +22,31 @@
 }
 
 .image {
+  position: relative;
+  display: flex;
+  max-width: 146px;
+  width: 100%;
+  height: 75px;
   margin-top: 14px;
-}
+  box-sizing: border-box;
 
-.game {
-  margin-top: 14.59px;
-  font-weight: 500;
+  img {
+    object-fit: contain;
+  }
 }
 
 .name {
-  text-align: center;
-  margin-top: 6px;
+  margin-top: 20px;
+  font-family: var(--font-exo2);
+  font-size: 20px;
   font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+
+.game {
+  margin-top: auto;
+  padding-top: 15px;
+  font-weight: 500;
+  text-align: center;
 }

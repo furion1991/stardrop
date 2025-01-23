@@ -1,8 +1,8 @@
 export enum LootRarity {
-  COMMON = 'common',
-  RARE = 'rare',
-  SUPER_RARE = 'super-rare',
-  EPIC = 'epic',
-  MYTHICAL = 'mythical',
-  LEGENDARY = 'legendary'
+  COMMON = 0,
+  RARE = 1,
+  SUPER_RARE = 2,
+  EPIC = 3,
+  MYTHICAL = 4,
+  LEGENDARY = 5
 }

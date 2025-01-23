@@ -30,6 +30,11 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
   const signUp = useSignUp()
   const signIn = useSignIn()
 
+  const signInError =
+    signIn.error && signIn.error.response?.data.error === 'Invalid Password'
+      ? 'Неправильный пароль'
+      : undefined
+
   const setEmailData = ({ email, isEmailExist }: EmailData) => {
     setEmail(email)
     setEmailExist(Boolean(isEmailExist))
@@ -96,6 +101,7 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
 
       {step === 'password' && isEmailExist ? (
         <EnterPasswordForm
+          error={signInError}
           loading={signIn.isPending}
           onPasswordSubmit={signInUser}
           onPasswordReset={() => {

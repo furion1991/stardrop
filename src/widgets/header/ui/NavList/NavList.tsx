@@ -20,24 +20,24 @@ export const NavList = () => {
     },
     {
       label: 'Контракты',
-      href: '/',
+      href: '/contracts',
       image: <Image src='/icons/medal.svg' width={21} height={21} alt='Медаль' priority />
     },
     {
       label: 'Апгрейд',
-      href: '/',
+      href: '/upgrades',
       image: (
         <Image src='/icons/upgrade-double.svg' width={22} height={22} alt='Улучшение' priority />
       )
     },
     {
       label: 'Барабан',
-      href: '/',
+      href: '/bonus-wheel',
       image: <Image src='/icons/drum-wheel.svg' width={19} height={22} alt='Барабан' priority />
     },
     {
       label: 'Бонусы',
-      href: '/',
+      href: '/bonuses',
       image: <Image src='/icons/gift-box.svg' width={22} height={22} alt='Подарок' priority />
     }
   ]

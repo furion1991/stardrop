@@ -3,8 +3,12 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { TextField } from '@/shared/ui'
+
+import { changeUserInfo } from '../../api/user'
+import { useUser } from '@/shared/hooks/useUser'
 
 import classes from './UserNameChange.module.scss'
 
@@ -19,6 +23,9 @@ type UserNameChangeProps = {
 }
 
 export const UserNameChange = ({ userName, onUserNameSubmit }: UserNameChangeProps) => {
+  const { user } = useUser()
+  const queryClient = useQueryClient()
+
   const useFormProps = useForm<FormSchema>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -30,8 +37,23 @@ export const UserNameChange = ({ userName, onUserNameSubmit }: UserNameChangePro
     formState: { errors }
   } = useFormProps
 
+  const { mutate: changeUserName, isPending: isUserNameChanging } = useMutation({
+    mutationFn: changeUserInfo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['me']
+      })
+    }
+  })
+
   const onFormSubmit = ({ newUserName }: FormSchema) => {
-    console.log(newUserName)
+    if (!user) return
+
+    changeUserName({
+      id: user.id,
+      userName: newUserName
+    })
+
     onUserNameSubmit()
   }
 
@@ -45,7 +67,7 @@ export const UserNameChange = ({ userName, onUserNameSubmit }: UserNameChangePro
           defaultValue=''
         />
 
-        <button className={classes.changeBtn} type='submit'>
+        <button className={classes.changeBtn} type='submit' disabled={isUserNameChanging}>
           Сохранить
         </button>
       </form>

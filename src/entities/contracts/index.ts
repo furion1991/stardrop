@@ -1,1 +1,1 @@
-export { ContractsHistoryList } from './ui/ContractsHistoryList/ContractsHistoryList'
+export { ContractHistoryItem } from './ui/ContractHistoryItem/ContractHistoryItem'

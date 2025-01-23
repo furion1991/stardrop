@@ -1,0 +1,10 @@
+.caseLootList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 269px);
+  grid-template-rows: repeat(auto-fit, minmax(227px, auto));
+  gap: 30px 35px;
+}
+
+.lootItem {
+  padding: 12px 25px 23px;
+}

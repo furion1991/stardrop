@@ -1,0 +1,33 @@
+.wrapper {
+  max-width: 1450px;
+  width: 100%;
+  margin: 85px auto 0;
+}
+
+.userInfoPanel {
+  display: flex;
+  align-items: center;
+  height: 277px;
+  padding: 35px;
+  border-radius: 20px;
+  background: #1b205a;
+  box-sizing: border-box;
+}
+
+.userHistory {
+  margin-top: 15px;
+  border-radius: 20px;
+  background: #1b205a;
+}
+
+.userHistoryTopPanel {
+  padding: 35px;
+}
+
+.bestDrop,
+.favoriteCase {
+  margin-left: 25px;
+  width: 295px;
+  height: 100%;
+  flex-shrink: 0;
+}

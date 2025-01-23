@@ -1,0 +1,6 @@
+.contractsHistoryList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 28px;
+  padding: 30px 35px 35px;
+}

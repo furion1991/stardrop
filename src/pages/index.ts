@@ -1,6 +1,8 @@
-import { MainPage } from './Main/Main'
-import { ProfilePage } from './Profile/Profile'
-import { AuthRequiredPage } from './AuthRequired/AuthRequired'
-import { CasePage } from './CasePage/CasePage'
-
-export { MainPage, ProfilePage, AuthRequiredPage, CasePage }
+export { MainPage } from './Main/Main'
+export { ProfilePage } from './Profile/Profile'
+export { AuthRequiredPage } from './AuthRequired/AuthRequired'
+export { CasePage } from './CasePage/CasePage'
+export { NotFoundPage } from './NotFound/NotFound'
+export { UserByIdPage } from './UserById/UserById'
+export { BonusWheelPage } from './BonusWheel/BonusWheel'
+export { UpgradesPage } from './Upgrades/Upgrades'

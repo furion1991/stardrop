@@ -15,8 +15,8 @@ export const Logo = ({ withShadow = false }: LogoProps) => {
     >
       <Image
         src={withShadow ? '/icons/logo-with-shadow.svg' : '/icons/logo.svg'}
-        width={64}
-        height={63}
+        width={withShadow ? 84 : 64}
+        height={withShadow ? 83 : 63}
         alt='StarDrop лого'
       />
     </Link>

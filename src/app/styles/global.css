@@ -31,3 +31,7 @@ button {
   border: none;
   outline: none;
 }
+
+img {
+  user-select: none;
+}

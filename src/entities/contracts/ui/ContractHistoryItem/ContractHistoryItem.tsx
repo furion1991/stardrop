@@ -28,10 +28,6 @@ export const ContractHistoryItem = () => {
             price={980}
             game='Melinor'
             name='Starned Corbern'
-            imageSize={{
-              width: 120,
-              height: 60
-            }}
           />
 
           {itemsForCraft.map(({ id, rarity }) => {

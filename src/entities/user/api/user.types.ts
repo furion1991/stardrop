@@ -10,11 +10,24 @@ type UserRole = {
   name: string
 }
 
+type IntentoryLootData = {
+  baseCost: number
+  game: string
+  id: string
+  image: string
+  isVisible: boolean
+  name: string
+  rarity: number
+  sellPrice: number
+  type: number
+}
+
 type InventoryItem = {
   id: string
-  userinventoryid: string
-  quantity: number
   itemId: string
+  itemRecordState: number
+  userinventoryid: string
+  itemDto: IntentoryLootData
 }
 
 type UserInventory = {

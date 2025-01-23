@@ -1,0 +1,19 @@
+.userMainInfo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.avatar {
+}
+
+.userName {
+  margin-left: 44px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.userId {
+  align-self: flex-start;
+  margin-left: auto;
+}
