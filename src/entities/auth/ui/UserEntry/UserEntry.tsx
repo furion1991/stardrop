@@ -63,7 +63,7 @@ export const UserEntry = () => {
               <span>{user.currentBalance}</span>
 
               <span>
-                <Image src='/icons/logo-mini.svg' width={24} height={23} alt='Лого' />
+                <Image src='/icons/logo-mini.svg' width={28} height={27} alt='Лого' />
               </span>
             </div>
 
@@ -96,16 +96,16 @@ export const UserEntry = () => {
                 </li>
 
                 <li>
-                  <Link href='/faq'>
-                    <Image src='/icons/info-rounded.svg' width={20} height={20} alt='Информация' />
-                    <span>F.A.Q</span>
+                  <Link href='/deposit'>
+                    <Image src='/icons/wallet.svg' width={20} height={20} alt='Кошелек' />
+                    <span>Пополнить баланс</span>
                   </Link>
                 </li>
 
                 <li>
-                  <Link href='/deposit'>
-                    <Image src='/icons/wallet.svg' width={20} height={20} alt='Кошелек' />
-                    <span>Пополнить баланс</span>
+                  <Link href='/faq'>
+                    <Image src='/icons/info-rounded.svg' width={20} height={20} alt='Информация' />
+                    <span>F.A.Q</span>
                   </Link>
                 </li>
 
