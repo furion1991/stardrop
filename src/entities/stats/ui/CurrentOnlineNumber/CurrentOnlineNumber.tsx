@@ -14,7 +14,7 @@ export const CurrentOnlineNumber = () => {
       <Image src='/icons/network.svg' width={23.92} height={18.23} alt='сеть' priority />
 
       <div className={classes.right}>
-        <p>{typeof data === 'string' ? data : null}</p>
+        <p>{typeof data === 'number' ? data : null}</p>
         <p>Online</p>
       </div>
     </div>
