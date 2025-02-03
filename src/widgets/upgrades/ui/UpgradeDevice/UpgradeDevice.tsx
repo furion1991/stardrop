@@ -1,7 +1,8 @@
-// 'use client'
+'use client'
 
 import Image from 'next/image'
 import cn from 'classnames'
+import { useState } from 'react'
 
 import { Button, PriceWithCurrency } from '@/shared/ui'
 
@@ -9,7 +10,6 @@ import { useAuth } from '@/shared/hooks/useAuth'
 import { useAuthModal } from '@/shared/hooks/useAuthModal'
 
 import classes from './UpgradeDevice.module.scss'
-import { useState } from 'react'
 
 type Item = {
   id: string

@@ -9,7 +9,7 @@
     width: 0;
     height: 0;
 
-    &:checked + .slider {
+    &:checked + span {
       background: rgba(73, 56, 107, 1);
 
       &::before {
@@ -17,29 +17,30 @@
       }
     }
   }
-}
 
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 87.5px;
-  background: rgba(73, 56, 107, 0.5);
-  transition: var(--transition);
-  cursor: pointer;
-
-  // circle
-  &::before {
+  // slider
+  span {
     position: absolute;
-    left: 7px;
-    top: 7px;
-    content: '';
-    width: 17.5px;
-    height: 17.5px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #f18d74 0%, #cb4b9e 100%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 87.5px;
+    background: rgba(73, 56, 107, 0.5);
     transition: var(--transition);
+    cursor: pointer;
+
+    // circle
+    &::before {
+      position: absolute;
+      left: 7px;
+      top: 7px;
+      content: '';
+      width: 17.5px;
+      height: 17.5px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #f18d74 0%, #cb4b9e 100%);
+      transition: var(--transition);
+    }
   }
 }

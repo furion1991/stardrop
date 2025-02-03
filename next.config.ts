@@ -4,8 +4,12 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/v1/:path*',
+        source: '/api/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_BASE}/v1/:path*`
+      },
+      {
+        source: '/signalr/:path*',
+        destination: `${process.env.NEXT_PUBLIC_API_BASE}/:path*`
       }
     ]
   },

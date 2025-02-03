@@ -55,7 +55,13 @@ export const UserEntry = () => {
               setUserPopupOpen(true)
             }}
           >
-            <Link href='/' className={classes.balanceUpLink}>
+            <Link
+              href='/deposit'
+              className={classes.balanceUpLink}
+              onClick={(e) => {
+                e.stopPropagation()
+              }}
+            >
               <Image src='/icons/plus.svg' width={15} height={15} alt='Плюс' />
             </Link>
 

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import cn from 'classnames'
+import Link from 'next/link'
 
 import { Button, PriceWithCurrency } from '@/shared/ui'
 
@@ -47,9 +48,12 @@ export const CaseOpeningCondition = ({ condition, caseOpenPrice }: CaseOpeningCo
             <p>Недостаточно средств для открытия кейса</p>
           </div>
 
-          <Button color='purple' className={classes.balanceUpLink}>
-            <Image src='/icons/wallet.svg' width={22} height={18} alt='Кошелёк' /> Пополнить баланс
-          </Button>
+          <Link href='/deposit' className={classes.balanceUpLink}>
+            <Button color='purple'>
+              <Image src='/icons/wallet-filled.svg' width={22} height={18} alt='Кошелёк' />{' '}
+              Пополнить баланс
+            </Button>
+          </Link>
         </>
       ) : null}
     </div>

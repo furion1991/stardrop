@@ -3,10 +3,10 @@ import axios from 'axios'
 // import { getCookie } from '../utils'
 
 const API_BASE =
-  process.env.NODE_ENV === 'development' ? `/v1` : `${process.env.NEXT_PUBLIC_API_BASE}/v1`
+  process.env.NODE_ENV === 'development' ? `/api` : `${process.env.NEXT_PUBLIC_API_BASE}/v1`
 
 export const API = axios.create({
-  baseURL: '/v1',
+  baseURL: `/api`,
   withCredentials: true
 })
 

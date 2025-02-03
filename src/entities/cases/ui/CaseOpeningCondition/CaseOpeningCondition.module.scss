@@ -71,3 +71,13 @@
     }
   }
 }
+
+.balanceUpLink {
+  button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}

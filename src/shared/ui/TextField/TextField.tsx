@@ -40,7 +40,7 @@ export const TextField = ({
       />
 
       {type === 'password' || endAdornment ? (
-        <div className={classes.endAdornment}>
+        <>
           {type === 'password' ? (
             <button
               type='button'
@@ -56,7 +56,7 @@ export const TextField = ({
           ) : null}
 
           {endAdornment}
-        </div>
+        </>
       ) : null}
     </div>
   )

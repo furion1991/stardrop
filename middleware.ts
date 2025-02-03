@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
-const protectedRoutes = ['/profile']
+const protectedRoutes = ['/profile', '/deposit']
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname
@@ -34,5 +34,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/auth-required', '/profile']
+  matcher: ['/auth-required', '/profile', '/deposit']
 }

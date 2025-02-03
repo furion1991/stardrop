@@ -2,7 +2,13 @@ import type { Metadata } from 'next'
 import cn from 'classnames'
 import { Suspense } from 'react'
 
-import { AuthModalProvider, AuthProvider, QueryClientProvider, UserProvider } from '@/app/providers'
+import {
+  AuthModalProvider,
+  AuthProvider,
+  QueryClientProvider,
+  SignalRProvider,
+  UserProvider
+} from '@/app/providers'
 import { PageLayout } from '@/widgets/layout'
 
 import { fontExo, fontExo2, fontRepublicaMinor } from '@/shared/assets/fonts'
@@ -28,7 +34,9 @@ export default function RootLayout({
             <Suspense>
               <UserProvider>
                 <AuthModalProvider>
-                  <PageLayout>{children}</PageLayout>
+                  <SignalRProvider>
+                    <PageLayout>{children}</PageLayout>
+                  </SignalRProvider>
                 </AuthModalProvider>
               </UserProvider>
             </Suspense>

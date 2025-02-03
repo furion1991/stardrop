@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Button } from '@/shared/ui'
 
@@ -31,9 +32,11 @@ export const UserBalanceInfo = () => {
         </div>
       </div>
 
-      <Button color='purple' borderRadius='medium'>
-        Пополнить ›
-      </Button>
+      <Link href='/deposit' className={classes.balanceUpLink}>
+        <Button color='purple' borderRadius='medium'>
+          Пополнить ›
+        </Button>
+      </Link>
     </div>
   )
 }
