@@ -5,10 +5,10 @@ import { useState } from 'react'
 import { useParams } from 'next/navigation'
 
 import { CaseLootList, CaseBeforeOpen, CaseAfterOpen } from '@/widgets/cases'
-import { LinkBack } from '@/shared/ui'
+import { LinkBack, PageActions } from '@/shared/ui'
 
 import { useCase } from '@/entities/cases'
-import { useUser } from '@/shared/hooks/useUser'
+import { useUser } from '@/shared/hooks'
 import { useOpenCase } from '@/features/cases'
 
 import classes from './CasePage.module.scss'
@@ -35,13 +35,7 @@ export const CasePage = () => {
 
   return (
     <div className={classes.casePage}>
-      <div className={classes.topActions}>
-        <LinkBack />
-
-        <button type='button' className={classes.soundBtn}>
-          <Image src='/icons/sound.svg' width={26} height={25} alt='Звук' />
-        </button>
-      </div>
+      <PageActions />
 
       <div className={classes.wrapper}>
         <div className={classes.title}>

@@ -7,16 +7,16 @@ import { useRef, useState } from 'react'
 
 import { Button } from '@/shared/ui'
 
-import { useAuthModal } from '@/shared/hooks/useAuthModal'
-import { useUser } from '@/shared/hooks/useUser'
-import { useAuth } from '@/shared/hooks/useAuth'
+import { useAuthModal } from '@/shared/hooks'
+import { useUser } from '@/shared/hooks'
+import { useAuth } from '@/shared/hooks'
 
 import classes from './UserEntry.module.scss'
 
 export const UserEntry = () => {
   const { isAuth, logout } = useAuth()
   const { user } = useUser()
-  const { openModal } = useAuthModal()
+  const { openAuthModal } = useAuthModal()
 
   const userPopupRef = useRef(null)
   const [isUserPopupOpen, setUserPopupOpen] = useState(false)
@@ -24,7 +24,7 @@ export const UserEntry = () => {
   if (!user || !isAuth) {
     return (
       <div className={classes.userEntry}>
-        <Button className={classes.authBtn} boxShadow onClick={openModal}>
+        <Button className={classes.authBtn} boxShadow onClick={openAuthModal}>
           <span>
             <Image src='/icons/fingerprint.svg' width={29} height={28.99} alt='Отпечаток пальца' />
           </span>

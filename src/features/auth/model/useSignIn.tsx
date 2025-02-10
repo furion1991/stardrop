@@ -4,8 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { AxiosError, AxiosResponse } from 'axios'
 
-import { useAuth } from '@/shared/hooks/useAuth'
-import { useAuthModal } from '@/shared/hooks/useAuthModal'
+import { useAuth, useAuthModal } from '@/shared/hooks'
 import { signIn } from '../api/auth'
 
 type SignInError = {

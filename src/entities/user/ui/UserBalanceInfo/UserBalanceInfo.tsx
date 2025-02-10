@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Button } from '@/shared/ui'
 
-import { useUser } from '@/shared/hooks/useUser'
+import { useUser } from '@/shared/hooks'
 
 import classes from './UserBalanceInfo.module.scss'
 

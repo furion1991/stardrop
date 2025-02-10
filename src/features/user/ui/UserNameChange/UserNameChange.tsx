@@ -8,7 +8,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { TextField } from '@/shared/ui'
 
 import { changeUserInfo } from '../../api/user'
-import { useUser } from '@/shared/hooks/useUser'
+import { useUser } from '@/shared/hooks'
 
 import classes from './UserNameChange.module.scss'
 

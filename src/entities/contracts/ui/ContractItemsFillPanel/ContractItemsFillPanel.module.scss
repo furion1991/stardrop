@@ -1,0 +1,90 @@
+.contractItemsFillPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  position: relative;
+  max-width: 1072px;
+  width: 100%;
+  padding: 25px 38px 20px;
+  border-radius: 20px;
+  background: linear-gradient(92deg, #3657df 15.24%, #3556dd 65.14%);
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.mainText {
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+
+  span {
+    font-weight: 900;
+  }
+}
+
+.progressBar {
+  width: 100%;
+  height: 33px;
+  margin-top: 26px;
+  border-radius: 29px;
+  background: #20429b;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 29px;
+  background: linear-gradient(180deg, #e171e3 0%, #8332ed 100%);
+  transition: var(--transition);
+}
+
+.ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.tick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  &:nth-of-type(2n) .tickLine {
+    height: 4px;
+    background: #4f80e2;
+  }
+}
+
+.tickLabel {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tickLine {
+  width: 1px;
+  height: 8px;
+  background: #4b79ff;
+}
+
+.boxBg {
+  position: absolute;
+  top: 106px;
+  width: 100%;
+  filter: drop-shadow(0px 50px 44.2px rgba(0, 0, 0, 0.05)) drop-shadow(0px 7px 0px #2b46ae)
+    drop-shadow(0px 14px 4px rgba(0, 0, 0, 0.06));
+  z-index: 5;
+}
+
+.btn {
+  position: relative;
+  margin-top: 44px;
+  max-width: 351px;
+  width: 100%;
+  height: 65px;
+  z-index: 8;
+}

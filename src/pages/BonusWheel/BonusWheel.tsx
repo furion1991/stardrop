@@ -2,17 +2,14 @@ import Image from 'next/image'
 
 import { BonusWheel } from '@/widgets/bonusWheel'
 import { BonusItem, SuperBonusWord } from '@/entities/bonusWheel'
+import { PageActions } from '@/shared/ui'
 
 import classes from './BonusWheel.module.scss'
 
 export const BonusWheelPage = () => {
   return (
     <>
-      <div className={classes.topActions}>
-        <button type='button' className={classes.soundBtn}>
-          <Image src='/icons/sound.svg' width={26} height={25} alt='Звук' />
-        </button>
-      </div>
+      <PageActions />
 
       <div className={classes.bonusWheel}>
         <div className={classes.headerBg}>

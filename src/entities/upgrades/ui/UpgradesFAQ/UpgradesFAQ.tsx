@@ -1,4 +1,5 @@
 import { AccordionItem } from '@/shared/ui'
+
 import classes from './UpgradesFAQ.module.scss'
 
 export const UpgradesFAQ = () => {

@@ -6,8 +6,7 @@ import { useState } from 'react'
 
 import { Button, PriceWithCurrency } from '@/shared/ui'
 
-import { useAuth } from '@/shared/hooks/useAuth'
-import { useAuthModal } from '@/shared/hooks/useAuthModal'
+import { useAuth, useAuthModal } from '@/shared/hooks'
 
 import classes from './UpgradeDevice.module.scss'
 
@@ -29,7 +28,7 @@ type UpgradeDeviceProps = {
 
 export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps) => {
   const { isAuth } = useAuth()
-  const { openModal: openAuthModal } = useAuthModal()
+  const { openAuthModal } = useAuthModal()
 
   const [upgradeState, setUpgradeState] = useState<UpgradeState>('default')
 

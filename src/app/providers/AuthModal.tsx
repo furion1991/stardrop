@@ -6,7 +6,7 @@ import { AuthModal } from '@/features/auth'
 
 type AuthModalContextProps = {
   isOpen: boolean
-  openModal: () => void
+  openAuthModal: () => void
   closeModal: () => void
 }
 
@@ -19,7 +19,7 @@ export const AuthModalProvider = ({ children }: { children: React.ReactNode }) =
     <AuthModalContext.Provider
       value={{
         isOpen: isAuthModalOpen,
-        openModal: () => {
+        openAuthModal: () => {
           setAuthModalOpen(true)
         },
         closeModal: () => {

@@ -11,7 +11,7 @@ import { UpgradesHistoryList } from '@/widgets/upgrades'
 import { ContractsHistoryList } from '@/widgets/contracts'
 import { WithdrawnItemsList } from '@/entities/withdrawals'
 
-import { useUser } from '@/shared/hooks/useUser'
+import { useUser } from '@/shared/hooks'
 
 import classes from './Profile.module.scss'
 

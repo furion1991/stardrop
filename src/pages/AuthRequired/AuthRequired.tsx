@@ -3,12 +3,12 @@
 import Image from 'next/image'
 
 import { Button } from '@/shared/ui'
-import { useAuthModal } from '@/shared/hooks/useAuthModal'
+import { useAuthModal } from '@/shared/hooks'
 
 import classes from './AuthRequired.module.scss'
 
 export const AuthRequiredPage = () => {
-  const { openModal } = useAuthModal()
+  const { openAuthModal } = useAuthModal()
 
   return (
     <div className={classes.wrapper}>
@@ -20,7 +20,7 @@ export const AuthRequiredPage = () => {
 
       <h2>Для получения доступа к странице</h2>
 
-      <Button boxShadow onClick={openModal}>
+      <Button boxShadow onClick={openAuthModal}>
         Войти
       </Button>
     </div>

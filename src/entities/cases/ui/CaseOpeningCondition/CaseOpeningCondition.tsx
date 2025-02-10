@@ -4,8 +4,7 @@ import Link from 'next/link'
 
 import { Button, PriceWithCurrency } from '@/shared/ui'
 
-import { useAuthModal } from '@/shared/hooks/useAuthModal'
-import { useUser } from '@/shared/hooks/useUser'
+import { useAuthModal, useUser } from '@/shared/hooks'
 
 import classes from './CaseOpeningCondition.module.scss'
 
@@ -17,7 +16,7 @@ type CaseOpeningConditionProps = {
 }
 
 export const CaseOpeningCondition = ({ condition, caseOpenPrice }: CaseOpeningConditionProps) => {
-  const { openModal } = useAuthModal()
+  const { openAuthModal } = useAuthModal()
   const { user } = useUser()
 
   const userBalance = user?.currentBalance || 0
@@ -32,7 +31,7 @@ export const CaseOpeningCondition = ({ condition, caseOpenPrice }: CaseOpeningCo
             <p>Авторизуйтесь для открытия кейсов</p>
           </div>
 
-          <Button boxShadow onClick={openModal}>
+          <Button boxShadow onClick={openAuthModal}>
             Войти
           </Button>
         </>

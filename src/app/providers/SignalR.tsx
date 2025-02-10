@@ -4,21 +4,15 @@ import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signal
 import { createContext, useEffect, useState } from 'react'
 
 type SignalRContextProps = {
-  data: unknown
+  connection: HubConnection | null
 }
 
 export const SignalRContext = createContext({} as SignalRContextProps)
 
 export const SignalRProvider = ({ children }: { children: React.ReactNode }) => {
   const [connection, setConnection] = useState<HubConnection | null>(null)
-  const [loggedInUsers, setLoggedInUsers] = useState<unknown>()
 
-  // users_logged_in
-  // cases_logs_by_cost
-  // cases_logs
-  // cases_opened_count
-
-  useEffect(() => {
+  const createHubConnection = () => {
     const connect = new HubConnectionBuilder()
       .withUrl(`${process.env.NEXT_PUBLIC_API_BASE}/statistics`, {
         withCredentials: false
@@ -27,22 +21,26 @@ export const SignalRProvider = ({ children }: { children: React.ReactNode }) => 
       .configureLogging(LogLevel.Information)
       .build()
 
-    setConnection(connect)
+    return connect
+  }
 
-    connect.on('users_logged_in', (data) => {
-      setLoggedInUsers(data)
-    })
+  useEffect(() => {
+    const connection = createHubConnection()
 
-    connect
+    connection
       .start()
-      .then(() => {})
+      .then(() => {
+        console.log('SignalR connection success')
+      })
       .catch((err) => console.error('Error while connecting to SignalR Hub:', err))
+
+    setConnection(connection)
   }, [])
 
   return (
     <SignalRContext.Provider
       value={{
-        data: loggedInUsers
+        connection
       }}
     >
       {children}

@@ -1,6 +1,14 @@
 .timer {
   display: flex;
   gap: 15px;
+
+  &.secondary {
+    .field {
+      border-top: 1px solid #92e4fe;
+      background: linear-gradient(180deg, #555ed2 0%, #293c7f 100%);
+      box-shadow: -0.25px 33.75px 27px -20.75px #77a5f0 inset;
+    }
+  }
 }
 
 .field {
@@ -13,9 +21,7 @@
   height: 83px;
   padding: 11px 5px 13.5px;
   border-radius: 20px;
-  border-top: 1px solid #92e4fe;
-  background: linear-gradient(180deg, #555ed2 0%, #293c7f 100%);
-  box-shadow: -0.25px 33.75px 27px -20.75px #77a5f0 inset;
+  background: #12153a;
   box-sizing: border-box;
 
   p {

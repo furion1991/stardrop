@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import { CaseOpeningCondition, CasePreviewOpen } from '@/entities/cases'
 
-import { useAuth } from '@/shared/hooks/useAuth'
-import { useUser } from '@/shared/hooks/useUser'
+import { useAuth, useUser } from '@/shared/hooks'
 import { CaseOpenActions } from '@/features/cases'
 
 import classes from './CaseBeforeOpen.module.scss'

@@ -1,8 +1,14 @@
+'use client'
+
 import Image from 'next/image'
+
+import { useCasesOpenedNumber } from '../../model/useCasesOpenedNumber'
 
 import classes from './TotalSiteStatistics.module.scss'
 
 export const TotalSiteStatistics = () => {
+  const { casesOpenedNumber } = useCasesOpenedNumber()
+
   const stats = [
     {
       label: 'Всего пользоватей',
@@ -11,7 +17,7 @@ export const TotalSiteStatistics = () => {
     },
     {
       label: 'Открыто кейсов',
-      number: 9780,
+      number: casesOpenedNumber,
       icon: <Image src='/icons/chest.svg' width={100} height={100} alt='Сундук' />
     },
     {
@@ -29,7 +35,7 @@ export const TotalSiteStatistics = () => {
   return (
     <ul className={classes.totalSiteStatistics}>
       {stats.map(({ label, number, icon }) => {
-        const numberWithDot = new Intl.NumberFormat('de-DE').format(number)
+        const numberWithDot = number ? new Intl.NumberFormat('de-DE').format(number) : null
 
         return (
           <li key={label}>

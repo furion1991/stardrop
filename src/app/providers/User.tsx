@@ -3,7 +3,7 @@
 import { createContext, useEffect } from 'react'
 
 import { useMe, type User } from '@/entities/user'
-import { useAuth } from '@/shared/hooks/useAuth'
+import { useAuth } from '@/shared/hooks'
 
 type UserContextProps = {
   user?: User

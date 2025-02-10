@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { LatestOpenCasesFilter } from '@/features/latestOpenCases'
-import { LatestOpenCasesList } from '@/entities/latestOpenCases'
 import { CurrentOnlineNumber } from '@/entities/stats'
 import { UserEntry } from '@/entities/auth'
 import { Logo, SocialNetworksLinksList } from '@/shared/ui'
+import { LatestOpenCases } from '@/widgets/cases'
 
 import { NavList } from '../NavList/NavList'
 
@@ -19,12 +18,8 @@ export const Header = () => {
           <Logo withShadow />
         </div>
 
-        <div className={classes.latestOpenCasesFilter}>
-          <LatestOpenCasesFilter />
-        </div>
-
-        <div className={classes.latestOpenCasesList}>
-          <LatestOpenCasesList />
+        <div className={classes.latestOpenCases}>
+          <LatestOpenCases />
         </div>
 
         <div className={classes.currentOnlineNumber}>

@@ -8,7 +8,7 @@ export const fontExo = Exo({
 
 export const fontExo2 = Exo_2({
   variable: '--font-exo2',
-  subsets: ['latin']
+  subsets: ['cyrillic']
 })
 
 export const fontRepublicaMinor = localFont({

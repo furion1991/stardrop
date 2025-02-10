@@ -1,0 +1,12 @@
+.pageActions {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 52px;
+  padding-left: 35px;
+  padding-right: 62px;
+  box-sizing: border-box;
+  z-index: 10;
+}

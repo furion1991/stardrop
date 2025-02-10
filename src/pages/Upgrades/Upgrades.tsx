@@ -1,16 +1,14 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 
-import { Button, LinkBack } from '@/shared/ui'
+import { Button, PageActions } from '@/shared/ui'
 import { UpgradeDevice } from '@/widgets/upgrades'
 import { LootItemsSelection } from '@/entities/loot'
 import { UpgradesFAQ } from '@/entities/upgrades'
 
-import { useUser } from '@/shared/hooks/useUser'
-import { useAuth } from '@/shared/hooks/useAuth'
+import { useUser, useAuth } from '@/shared/hooks'
 
 import classes from './Upgrades.module.scss'
 
@@ -47,13 +45,7 @@ export const UpgradesPage = () => {
 
   return (
     <>
-      <div className={classes.topActions}>
-        <LinkBack />
-
-        <button type='button' className={classes.soundBtn}>
-          <Image src='/icons/sound.svg' width={26} height={25} alt='Звук' />
-        </button>
-      </div>
+      <PageActions />
 
       <div className={classes.upgradesPage}>
         <div className={classes.upgradeMain}>

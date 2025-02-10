@@ -9,7 +9,7 @@ import { UserBalanceInfo } from '@/entities/user'
 import { BestDroppedItem } from '@/entities/loot'
 import { FavoriteCase } from '@/entities/cases'
 
-import { useUser } from '@/shared/hooks/useUser'
+import { useUser } from '@/shared/hooks'
 
 import classes from './UserAuthorizedMainInfo.module.scss'
 

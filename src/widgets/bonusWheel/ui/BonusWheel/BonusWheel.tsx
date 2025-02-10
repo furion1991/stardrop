@@ -7,8 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 
 import { BonusesList, Task } from '@/entities/bonusWheel'
 import { Button, TextField, Timer } from '@/shared/ui'
-import { useAuthModal } from '@/shared/hooks/useAuthModal'
-import { useAuth } from '@/shared/hooks/useAuth'
+import { useAuthModal, useAuth } from '@/shared/hooks'
 
 import classes from './BonusWheel.module.scss'
 
@@ -18,7 +17,7 @@ export const BonusWheel = () => {
   const [wheelState, setWheelState] = useState<WheelState>('need-auth')
 
   const { isAuth } = useAuth()
-  const { openModal: openAuthModal } = useAuthModal()
+  const { openAuthModal } = useAuthModal()
   const useFormProps = useForm()
   const { handleSubmit, reset } = useFormProps
 
@@ -71,7 +70,7 @@ export const BonusWheel = () => {
             />
 
             <div className={classes.timer}>
-              <Timer />
+              <Timer expiryTime='15 jul 2026 18:00:00' styleVariant={2} />
             </div>
 
             <Button
