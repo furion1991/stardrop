@@ -18,3 +18,9 @@ export const getCase = async (id: string) => {
 
   return data
 }
+
+export const getUserFavoriteCase = async (userId: string) => {
+  const { data } = await API.get<Case>(`/audit/favcase/${userId}`)
+
+  return data
+}

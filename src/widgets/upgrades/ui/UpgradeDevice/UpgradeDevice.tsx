@@ -43,44 +43,11 @@ export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps
   const getUpgradeStateImage = (state: UpgradeState) => {
     switch (state) {
       case 'default':
-        return (
-          <div className={classes.stateImg}>
-            <Image
-              src='/img/upgrades/upgrade-default-state.png'
-              width={296}
-              height={296}
-              quality={100}
-              priority
-              alt='Состояние'
-            />
-          </div>
-        )
+        return '/img/upgrades/upgrade-default-state.svg'
       case 'loose':
-        return (
-          <div className={classes.stateImg} style={{ marginLeft: 2, top: 112 }}>
-            <Image
-              src='/img/upgrades/upgrade-loose.png'
-              width={366}
-              height={362}
-              quality={100}
-              priority
-              alt='Проигрыш'
-            />
-          </div>
-        )
+        return '/img/upgrades/upgrade-loose.svg'
       case 'win':
-        return (
-          <div className={classes.stateImg} style={{ marginLeft: -7, top: 140 }}>
-            <Image
-              src='/img/upgrades/upgrade-win.png'
-              width={339}
-              height={322}
-              quality={100}
-              priority
-              alt='Победа'
-            />
-          </div>
-        )
+        return '/img/upgrades/upgrade-win.svg'
     }
   }
 
@@ -129,7 +96,16 @@ export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps
             alt='Главный фон'
           />
 
-          {getUpgradeStateImage(upgradeState)}
+          <div className={classes.stateImg}>
+            <Image
+              src={getUpgradeStateImage(upgradeState)}
+              width={235}
+              height={235}
+              quality={100}
+              priority
+              alt='Состояние'
+            />
+          </div>
         </div>
 
         <div className={classes.upgradeInfo}>

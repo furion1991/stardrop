@@ -1,31 +1,36 @@
 import Image from 'next/image'
 
+import { PriceWithCurrency } from '@/shared/ui'
+
+import { useBestDrop } from '../../model/useBestDrop'
+
 import classes from './BestDroppedItem.module.scss'
 
-export const BestDroppedItem = () => {
+type BestDroppedItemProps = {
+  userId: string
+}
+
+export const BestDroppedItem = ({ userId }: BestDroppedItemProps) => {
+  const { data: bestDrop, isLoading } = useBestDrop({ userId })
+
+  if (isLoading || !bestDrop) return null
+
   return (
     <div className={classes.bestDroppedItem}>
       <p className={classes.title}>Лучший дроп</p>
 
       <div className={classes.image}>
-        <Image
-          src='/placeholders/best-drop.png'
-          width={199}
-          height={73}
-          alt='AK-47'
-          quality={100}
-        />
+        <Image src={bestDrop.image} width={73} height={73} alt={bestDrop.name} quality={100} />
       </div>
 
       <div className={classes.info}>
         <div className={classes.infoLeft}>
-          <p>AK-47</p>
-          <p>Soul Dreamer</p>
+          <p>{bestDrop.name}</p>
+          <p>{bestDrop.game}</p>
         </div>
 
         <div className={classes.price}>
-          <span>970.5</span>
-          <Image src='/icons/logo-mini.svg' width={16.47} height={16.1} alt='Валюта' />
+          <PriceWithCurrency>{bestDrop.sellPrice}</PriceWithCurrency>
         </div>
       </div>
     </div>

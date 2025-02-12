@@ -24,20 +24,23 @@
     }
   }
 
-  button {
-    position: relative;
-    align-self: flex-start;
+  & > a {
     margin-top: auto;
-    padding: 14.5px 19.08px 15.5px 18.92px;
-    font-family: var(--font-exo);
-    font-size: 16px;
-    font-weight: 900;
-    z-index: 1;
+
+    button {
+      position: relative;
+      align-self: flex-start;
+      padding: 14.5px 19.08px 15.5px 18.92px;
+      font-family: var(--font-exo);
+      font-size: 16px;
+      font-weight: 900;
+      z-index: 1;
+    }
   }
 
   .caseImage {
     position: absolute;
-    right: -33px;
+    right: -60px;
     bottom: -20px;
   }
 

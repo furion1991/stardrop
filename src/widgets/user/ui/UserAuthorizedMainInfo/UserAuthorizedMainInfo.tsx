@@ -61,11 +61,11 @@ export const UserAuthorizedMainInfo = () => {
       </div>
 
       <div className={classes.bestDrop}>
-        <BestDroppedItem />
+        <BestDroppedItem userId={user?.id || ''} />
       </div>
 
       <div className={classes.favoriteCase}>
-        <FavoriteCase />
+        <FavoriteCase userId={user?.id || ''} />
       </div>
     </div>
   )

@@ -14,12 +14,12 @@ export const LootRarityBox = ({ rarity, className, children }: LootRarityBoxProp
   return (
     <div
       className={cn(classes.lootRarityBox, className, {
-        [classes.common]: rarity === 0,
-        [classes.rare]: rarity === 1,
-        [classes.superRare]: rarity === 2,
-        [classes.epic]: rarity === 3,
-        [classes.mythical]: rarity === 4,
-        [classes.legendary]: rarity === 5
+        [classes.common]: rarity === LootRarity.COMMON,
+        [classes.rare]: rarity === LootRarity.RARE,
+        [classes.superRare]: rarity === LootRarity.SUPER_RARE,
+        [classes.epic]: rarity === LootRarity.EPIC,
+        [classes.mythical]: rarity === LootRarity.MYTHICAL,
+        [classes.legendary]: rarity === LootRarity.LEGENDARY
       })}
     >
       {children}

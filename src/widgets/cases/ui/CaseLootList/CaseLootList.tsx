@@ -1,11 +1,11 @@
-import { LootItem } from '@/entities/loot'
+import { LootItem, LootRarity } from '@/entities/loot'
 
 import classes from './CaseLootList.module.scss'
 
 type Loot = {
   id: string
   name: string
-  rarity: number
+  rarity: LootRarity
   isVisible: boolean
   game: string
   image: string
@@ -17,7 +17,16 @@ type CaseLootListProps = {
 
 export const CaseLootList = ({ loot }: CaseLootListProps) => {
   const sortByRarirty = (items: Loot[]) => {
-    return items.sort((a, b) => b.rarity - a.rarity)
+    const rarityOrder = [
+      LootRarity.LEGENDARY,
+      LootRarity.MYTHICAL,
+      LootRarity.EPIC,
+      LootRarity.SUPER_RARE,
+      LootRarity.RARE,
+      LootRarity.COMMON
+    ]
+
+    return items.sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity))
   }
 
   return (

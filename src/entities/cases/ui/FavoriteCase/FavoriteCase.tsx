@@ -1,32 +1,39 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Button } from '@/shared/ui'
 
+import { useFavoriteCase } from '../../model/useFavoriteCase'
+
 import classes from './FavoriteCase.module.scss'
 
-export const FavoriteCase = () => {
+type FavoriteCaseProps = {
+  userId: string
+}
+
+export const FavoriteCase = ({ userId }: FavoriteCaseProps) => {
+  const { data: caseData, isLoading: isLoading } = useFavoriteCase({ userId })
+
+  if (isLoading || !caseData) return null
+
   return (
     <div className={classes.favoriteCase}>
       <p>Любимый кейс</p>
 
-      <p>PALPATINE</p>
+      <p>{caseData.name}</p>
 
-      <Button type='button' borderRadius='medium'>
-        Открыть
-      </Button>
+      <Link href={`/cases/${caseData.id}`}>
+        <Button type='button' borderRadius='medium'>
+          Открыть
+        </Button>
+      </Link>
 
       <div className={classes.caseBg}>
         <Image src='/placeholders/favorite-case-back.png' width={180} height={207} alt='фон' />
       </div>
 
       <div className={classes.caseImage}>
-        <Image
-          src='/placeholders/favorite-case.png'
-          width={207}
-          height={183}
-          alt='Кейс Palpatine'
-          quality={100}
-        />
+        <Image src={caseData.image} width={256} height={144} alt={caseData.name} quality={100} />
       </div>
     </div>
   )

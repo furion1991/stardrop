@@ -96,11 +96,11 @@ export const UserByIdPage = () => {
         {user ? <UserMainInfo id={user.id} userName={user.userName} /> : null}
 
         <div className={classes.bestDrop}>
-          <BestDroppedItem />
+          <BestDroppedItem userId={userId || ''} />
         </div>
 
         <div className={classes.favoriteCase}>
-          <FavoriteCase />
+          <FavoriteCase userId={userId || ''} />
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import { NewsItemPreview } from '@/entities/news'
+
 import classes from './News.module.scss'
-import Link from 'next/link'
 
 export const NewsPage = () => {
   const news = [
