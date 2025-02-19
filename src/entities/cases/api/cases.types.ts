@@ -2,7 +2,7 @@ export type Case = {
   id: string
   name: string
   image: string
-  type: number
+  type: 'FirstCategory' | 'SecondCategory'
   price: number
   currentOpen: number
   openLimit: number

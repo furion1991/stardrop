@@ -5,7 +5,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { BonusesList, Task } from '@/entities/bonusWheel'
+import { BonusesList, Task } from '@/entities/bonus-wheel'
 import { Button, TextField, Timer } from '@/shared/ui'
 import { useAuthModal, useAuth } from '@/shared/hooks'
 

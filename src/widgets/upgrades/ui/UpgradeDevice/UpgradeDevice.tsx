@@ -12,7 +12,6 @@ import classes from './UpgradeDevice.module.scss'
 
 type Item = {
   id: string
-  game: string
   name: string
   sellPrice: number
   image: string

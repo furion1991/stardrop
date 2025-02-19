@@ -26,7 +26,6 @@ export const ContractHistoryItem = () => {
             className={classes.craftResult}
             rarity={LootRarity.RARE}
             price={980}
-            game='Melinor'
             name='Starned Corbern'
           />
 

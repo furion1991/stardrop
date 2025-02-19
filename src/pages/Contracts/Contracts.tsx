@@ -101,7 +101,7 @@ export const ContractsPage = () => {
               <h2>Доступные для контрактов предметы</h2>
 
               <ul className={classes.availableItemsForContract}>
-                {itemsAvailableForContract.map(({ id, name, game, image, sellPrice, rarity }) => {
+                {itemsAvailableForContract.map(({ id, name, image, sellPrice, rarity }) => {
                   return (
                     <li key={id}>
                       <LootItem
@@ -110,7 +110,6 @@ export const ContractsPage = () => {
                         image={image}
                         price={sellPrice}
                         rarity={rarity}
-                        game={game}
                       />
 
                       <div className={classes.actionBox}>

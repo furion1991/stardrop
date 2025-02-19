@@ -32,16 +32,10 @@ export const CaseLootList = ({ loot }: CaseLootListProps) => {
   return (
     <ul className={classes.caseLootList}>
       {sortByRarirty(loot.filter(({ isVisible }) => isVisible)).map(
-        ({ id, name, rarity, game, image }) => {
+        ({ id, name, rarity, image }) => {
           return (
             <li key={id}>
-              <LootItem
-                className={classes.lootItem}
-                game={game}
-                image={image}
-                name={name}
-                rarity={rarity}
-              />
+              <LootItem className={classes.lootItem} image={image} name={name} rarity={rarity} />
             </li>
           )
         }

@@ -7,7 +7,6 @@ import classes from './LootItemsSelection.module.scss'
 
 type Item = {
   id: string
-  game: string
   name: string
   rarity: number
   sellPrice: number
@@ -27,13 +26,13 @@ export const LootItemsSelection = ({
 }: LootItemsSelectionProps) => {
   return (
     <>
-      {items.map(({ game, name, id, image, sellPrice, rarity }) => {
+      {items.map(({ name, id, image, sellPrice, rarity }) => {
         return (
           <li
             key={id}
             className={classes.listItem}
             onClick={() => {
-              onItemSelect({ game, name, id, image, sellPrice, rarity })
+              onItemSelect({ name, id, image, sellPrice, rarity })
             }}
           >
             <LootItem
@@ -42,7 +41,6 @@ export const LootItemsSelection = ({
               image={image}
               price={sellPrice}
               rarity={rarity}
-              game={game}
             />
 
             <div

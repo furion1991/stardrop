@@ -7,4 +7,9 @@
 
 .lootItem {
   padding: 12px 25px 23px;
+  min-height: 217px;
+
+  & > p {
+    margin-bottom: auto;
+  }
 }

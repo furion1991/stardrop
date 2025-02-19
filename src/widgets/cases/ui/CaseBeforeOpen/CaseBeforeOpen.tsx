@@ -13,6 +13,7 @@ type CaseData = {
   openPrice: number
   name: string
   image: string
+  imageType: 'FirstCategory' | 'SecondCategory'
 }
 
 type CaseBeforeOpenProps = {
@@ -48,6 +49,7 @@ export const CaseBeforeOpen = ({ caseData, onCaseOpen, onCaseQuickOpen }: CaseBe
         hasBoxBg={casesToOpenQunatity !== 1}
         previewImage={caseData.image}
         previewsNumber={casesToOpenQunatity}
+        imageType={caseData.imageType}
       />
 
       {caseOpeningConidtion ? (

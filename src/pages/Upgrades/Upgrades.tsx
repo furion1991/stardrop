@@ -14,7 +14,6 @@ import classes from './Upgrades.module.scss'
 
 type Item = {
   id: string
-  game: string
   name: string
   rarity: number
   sellPrice: number
@@ -30,11 +29,10 @@ export const UpgradesPage = () => {
 
   const userInventoryItems = user
     ? user.userInventory.itemsUserInventory.map(({ id, itemDto }) => {
-        const { game, name, image, sellPrice, rarity } = itemDto
+        const { name, image, sellPrice, rarity } = itemDto
 
         return {
           id,
-          game,
           name,
           image,
           sellPrice,

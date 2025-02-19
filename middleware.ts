@@ -9,6 +9,9 @@ export default async function middleware(req: NextRequest) {
 
   const cookieStore = await cookies()
   const hasAccessToken = cookieStore.has('AccessToken')
+  const hasRefreshToken = cookieStore.has('RefreshToken')
+  cookieStore.set('hasAccessToken', String(Number(hasAccessToken)))
+  cookieStore.set('hasRefreshToken', String(Number(hasRefreshToken)))
 
   // redirect from protected routes if haven't accessToken
   if (isProtectedRoute && !hasAccessToken) {

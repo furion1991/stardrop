@@ -74,7 +74,6 @@ export const InventoryLootList = ({
             <LootItem
               className={classes.lootItem}
               rarity={rarity}
-              game={game}
               name={name}
               price={sellPrice}
               image={image}

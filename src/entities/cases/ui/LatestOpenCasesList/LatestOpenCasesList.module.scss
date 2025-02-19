@@ -1,6 +1,7 @@
 .latestOpenCasesList {
   display: flex;
   gap: 2px;
+  overflow-x: hidden;
 
   & > div {
     flex-shrink: 0;

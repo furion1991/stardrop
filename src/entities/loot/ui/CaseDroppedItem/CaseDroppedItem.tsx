@@ -25,7 +25,7 @@ export const CaseDroppedItem = ({ droppedItem, onItemSell }: CaseDroppedItemItem
 
       <p className={classes.name}>{droppedItem.name}</p>
 
-      <p className={classes.game}>{droppedItem.game}</p>
+      {/* <p className={classes.game}>{droppedItem.game}</p> */}
 
       <Button className={classes.sellBtn} onClick={onItemSell}>
         Продать

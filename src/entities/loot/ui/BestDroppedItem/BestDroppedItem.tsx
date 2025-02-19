@@ -17,22 +17,19 @@ export const BestDroppedItem = ({ userId }: BestDroppedItemProps) => {
 
   return (
     <div className={classes.bestDroppedItem}>
-      <p className={classes.title}>Лучший дроп</p>
-
-      <div className={classes.image}>
-        <Image src={bestDrop.image} width={73} height={73} alt={bestDrop.name} quality={100} />
-      </div>
-
-      <div className={classes.info}>
-        <div className={classes.infoLeft}>
-          <p>{bestDrop.name}</p>
-          <p>{bestDrop.game}</p>
-        </div>
+      <div className={classes.top}>
+        <p className={classes.title}>Лучший дроп</p>
 
         <div className={classes.price}>
           <PriceWithCurrency>{bestDrop.sellPrice}</PriceWithCurrency>
         </div>
       </div>
+
+      <div className={classes.image}>
+        <Image src={bestDrop.image} width={80} height={80} alt={bestDrop.name} quality={100} />
+      </div>
+
+      <p className={classes.itemName}>{bestDrop.name}</p>
     </div>
   )
 }

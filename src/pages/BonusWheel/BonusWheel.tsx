@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import { BonusWheel } from '@/widgets/bonusWheel'
-import { BonusItem, SuperBonusWord } from '@/entities/bonusWheel'
+import { BonusWheel } from '@/widgets/bonus-wheel'
+import { BonusItem, SuperBonusWord } from '@/entities/bonus-wheel'
 import { PageActions } from '@/shared/ui'
 
 import classes from './BonusWheel.module.scss'

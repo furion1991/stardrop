@@ -31,7 +31,7 @@ export const Header = () => {
         <NavList />
 
         <div className={classes.bottomRight}>
-          <Link href='/' className={classes.crashRocketLink}>
+          <Link href='/crash-rocket' className={classes.crashRocketLink}>
             <Image src='/img/crash-rocket-bg.png' alt='Фон' priority fill />
             <Image src='/img/crash-rocket-girl.png' alt='Девочка' priority fill />
 

@@ -38,7 +38,7 @@ export const ItemsForContractList = ({
 
   return (
     <div className={classes.itemsForContractList}>
-      {userInventoryItems.map(({ id, name, game, image, sellPrice, rarity }) => {
+      {userInventoryItems.map(({ id, name, image, sellPrice, rarity }) => {
         const isIteminContract = itemsIdsInContact.includes(id)
 
         return (
@@ -49,7 +49,6 @@ export const ItemsForContractList = ({
               image={image}
               price={sellPrice}
               rarity={rarity}
-              game={game}
             />
 
             <div

@@ -11,6 +11,7 @@ type UseFavoriteCaseProps = {
 export const useFavoriteCase = ({ userId }: UseFavoriteCaseProps) => {
   return useQuery({
     queryKey: ['favorite-case', userId],
-    queryFn: () => getUserFavoriteCase(userId)
+    queryFn: () => getUserFavoriteCase(userId),
+    enabled: Boolean(userId)
   })
 }

@@ -27,7 +27,6 @@ export const UpgradeItem = ({ result }: UpgradeItemProps) => {
           className={classes.loot}
           rarity={LootRarity.COMMON}
           price={980}
-          game='Melinor'
           name='Starned Corbem'
         />
 
@@ -46,7 +45,6 @@ export const UpgradeItem = ({ result }: UpgradeItemProps) => {
           className={classes.loot}
           rarity={LootRarity.RARE}
           price={1980}
-          game='Melinor'
           name='Starned Corbem'
         />
       </div>

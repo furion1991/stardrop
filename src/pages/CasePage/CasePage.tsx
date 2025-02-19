@@ -1,17 +1,18 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 import { useParams } from 'next/navigation'
 
 import { CaseLootList, CaseBeforeOpen, CaseAfterOpen } from '@/widgets/cases'
-import { LinkBack, PageActions } from '@/shared/ui'
+import { PageActions } from '@/shared/ui'
 
-import { useCase } from '@/entities/cases'
+import { CaseOpeningAnimation, useCase } from '@/entities/cases'
 import { useUser } from '@/shared/hooks'
 import { useOpenCase } from '@/features/cases'
 
 import classes from './CasePage.module.scss'
+
+type OpenCaseState = 'not-open' | 'opening' | 'opened'
 
 export const CasePage = () => {
   const params = useParams<{ id: string }>()
@@ -19,11 +20,13 @@ export const CasePage = () => {
 
   const { user } = useUser()
   const [droppedLootItemId, setDroppedLootItemId] = useState('')
+  const [openCaseState, setOpenCaseState] = useState<OpenCaseState>('not-open')
   const { data: caseData, isLoading: isCaseLoading } = useCase({ id: caseId ?? '' })
 
   const { mutate: openCase, isPending: isCaseOpening } = useOpenCase({
     onSuccess: ({ droppedLootItemId }) => {
       setDroppedLootItemId(droppedLootItemId)
+      setOpenCaseState('opening')
     }
   })
 
@@ -45,24 +48,39 @@ export const CasePage = () => {
 
         {caseId && caseData ? (
           <div className={classes.caseOpen}>
-            {!droppedLootItemId ? (
+            {openCaseState === 'not-open' ? (
               <CaseBeforeOpen
                 caseData={{
                   id: caseId,
                   name: caseData.name,
                   openPrice: caseData.price,
-                  image: caseData.image
+                  image: caseData.image,
+                  imageType: caseData.type
                 }}
                 onCaseOpen={handleCaseOpen}
                 onCaseQuickOpen={handleCaseOpen}
               />
-            ) : (
+            ) : null}
+
+            {openCaseState === 'opening' && droppedLootItemId ? (
+              <div className={classes.caseRoulette}>
+                <CaseOpeningAnimation
+                  droppedItemId={droppedLootItemId}
+                  lootItems={caseData.items}
+                  onAnimationComplete={() => {
+                    setOpenCaseState('opened')
+                  }}
+                />
+              </div>
+            ) : null}
+
+            {openCaseState === 'opened' && droppedLootItemId ? (
               <CaseAfterOpen
                 caseId={caseId}
                 droppedItemId={droppedLootItemId}
                 onCaseReopen={handleCaseOpen}
               />
-            )}
+            ) : null}
           </div>
         ) : null}
 

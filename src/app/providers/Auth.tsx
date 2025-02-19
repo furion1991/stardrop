@@ -23,19 +23,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     mutationFn: signOut
   })
 
+  const handleLogout = () => {
+    logout()
+    setAuth(false)
+
+    if (pathname === '/profile') {
+      router.push('/')
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
         isAuth,
         setAuth,
-        logout: () => {
-          logout()
-          setAuth(false)
-
-          if (pathname === '/profile') {
-            router.push('/')
-          }
-        }
+        logout: handleLogout
       }}
     >
       {children}

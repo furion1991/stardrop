@@ -11,6 +11,7 @@ type UseBestDropProps = {
 export const useBestDrop = ({ userId }: UseBestDropProps) => {
   return useQuery({
     queryKey: ['best-drop', userId],
-    queryFn: () => getBestDrop(userId)
+    queryFn: () => getBestDrop(userId),
+    enabled: Boolean(userId)
   })
 }
