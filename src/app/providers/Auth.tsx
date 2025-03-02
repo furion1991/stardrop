@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     mutationFn: socialAuth,
     onSuccess: () => {
       setAuth(true)
-      router.push(window.location.pathname)
+      // router.replace(window.location.pathname)
     }
   })
 
@@ -68,9 +68,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
+    if (isAuth) return
+
     telegramAuth()
     vkAuth()
-  }, [])
+  }, [isAuth])
 
   const handleLogout = () => {
     logout()
