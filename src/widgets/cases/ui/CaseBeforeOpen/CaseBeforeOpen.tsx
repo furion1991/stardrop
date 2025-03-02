@@ -18,11 +18,19 @@ type CaseData = {
 
 type CaseBeforeOpenProps = {
   caseData: CaseData
+  quickOpenActive: boolean
+  isCaseOpening: boolean
   onCaseOpen: () => void
   onCaseQuickOpen: () => void
 }
 
-export const CaseBeforeOpen = ({ caseData, onCaseOpen, onCaseQuickOpen }: CaseBeforeOpenProps) => {
+export const CaseBeforeOpen = ({
+  caseData,
+  isCaseOpening,
+  quickOpenActive,
+  onCaseOpen,
+  onCaseQuickOpen
+}: CaseBeforeOpenProps) => {
   const [casesToOpenQunatity, setCasesToOpenQunatity] = useState(1)
 
   const { isAuth } = useAuth()
@@ -62,8 +70,10 @@ export const CaseBeforeOpen = ({ caseData, onCaseOpen, onCaseQuickOpen }: CaseBe
       ) : (
         <div className={classes.caseOpenActions}>
           <CaseOpenActions
+            quickOpenActive={quickOpenActive}
             casesQuantity={casesToOpenQunatity}
             casePrice={caseData.openPrice}
+            isCaseOpening={isCaseOpening}
             onCaseOpen={onCaseOpen}
             onCaseQuickOpen={onCaseQuickOpen}
             onCasesQuantityChange={setCasesToOpenQunatity}

@@ -2,12 +2,14 @@
 
 import Image from 'next/image'
 
-import { useCasesOpenedNumber } from '../../model/useCasesOpenedNumber'
+import { useSignalrData } from '@/shared/hooks'
 
 import classes from './TotalSiteStatistics.module.scss'
 
 export const TotalSiteStatistics = () => {
-  const { casesOpenedNumber } = useCasesOpenedNumber()
+  const {
+    data: { casesOpenedNumber }
+  } = useSignalrData()
 
   const stats = [
     {

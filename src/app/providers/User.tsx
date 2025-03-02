@@ -29,8 +29,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     setAuth(Boolean(user))
   }, [user, isUserLoading])
 
-  useEffect(() => {}, [])
-
   return (
     <UserContext.Provider
       value={{

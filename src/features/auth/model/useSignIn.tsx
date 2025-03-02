@@ -37,6 +37,8 @@ export const useSignIn = () => {
 
       if (redirectURL) {
         router.push(redirectURL)
+      } else {
+        router.replace(window.location.pathname)
       }
     }
   })

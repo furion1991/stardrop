@@ -1,2 +1,2 @@
 export { AuthModal } from './ui/AuthModal/AuthModal'
-export { signOut } from './api/auth'
+export { signOut, socialAuth } from './api/auth'

@@ -3,13 +3,13 @@
 import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
 import { createContext, useEffect, useState } from 'react'
 
-type SignalRContextProps = {
+type SignalrContextProps = {
   connection: HubConnection | null
 }
 
-export const SignalRContext = createContext({} as SignalRContextProps)
+export const SignalrContext = createContext({} as SignalrContextProps)
 
-export const SignalRProvider = ({ children }: { children: React.ReactNode }) => {
+export const SignalrProvider = ({ children }: { children: React.ReactNode }) => {
   const [connection, setConnection] = useState<HubConnection | null>(null)
 
   const createHubConnection = () => {
@@ -30,20 +30,20 @@ export const SignalRProvider = ({ children }: { children: React.ReactNode }) => 
     connection
       .start()
       .then(() => {
-        console.log('SignalR connection success')
+        console.log('Signalr connection success')
       })
-      .catch((err) => console.error('Error while connecting to SignalR Hub:', err))
+      .catch((err) => console.error('Error while connecting to Signalr Hub:', err))
 
     setConnection(connection)
   }, [])
 
   return (
-    <SignalRContext.Provider
+    <SignalrContext.Provider
       value={{
         connection
       }}
     >
       {children}
-    </SignalRContext.Provider>
+    </SignalrContext.Provider>
   )
 }

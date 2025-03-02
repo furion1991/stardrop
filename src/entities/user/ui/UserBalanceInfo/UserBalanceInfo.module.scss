@@ -47,3 +47,9 @@
     line-height: 20px;
   }
 }
+
+.balance {
+  & > span {
+    align-items: flex-start;
+  }
+}

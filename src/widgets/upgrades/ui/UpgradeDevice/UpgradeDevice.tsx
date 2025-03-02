@@ -50,6 +50,21 @@ export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps
     }
   }
 
+  const placeholder = (
+    <div className={classes.itemPlaceholder}>
+      <div className={classes.placeholderImage}>
+        <Image
+          src='/img/upgrades/upgrade-gun-placeholder.svg'
+          width={163}
+          height={143}
+          alt='Пистолет'
+        />
+      </div>
+
+      <p>Выберите предмет с вашего инвентаря</p>
+    </div>
+  )
+
   return (
     <div className={classes.upgradeDevice}>
       <div className={classes.itemLeft}>
@@ -66,21 +81,14 @@ export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps
 
         {upgradeItem ? (
           <div className={classes.itemPlaceholder}>
-            <Image src={upgradeItem.image} width={163} height={143} alt={upgradeItem.name} />
+            <div className={classes.upgradeItemImage}>
+              <Image src={upgradeItem.image} width={200} height={200} alt={upgradeItem.name} />
+            </div>
 
-            <p>{upgradeItem.name}</p>
+            <p className={classes.itemName}>{upgradeItem.name}</p>
           </div>
         ) : (
-          <div className={classes.itemPlaceholder}>
-            <Image
-              src='/img/upgrades/upgrade-gun-placeholder.svg'
-              width={163}
-              height={143}
-              alt='Пистолет'
-            />
-
-            <p>Выберите предмет с вашего инвентаря</p>
-          </div>
+          placeholder
         )}
       </div>
 
@@ -152,9 +160,11 @@ export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps
 
         {itemToUpgrade ? (
           <div className={classes.itemPlaceholder}>
-            <Image src={itemToUpgrade.image} width={163} height={143} alt={itemToUpgrade.name} />
+            <div className={classes.upgradeItemImage}>
+              <Image src={itemToUpgrade.image} width={200} height={200} alt={itemToUpgrade.name} />
+            </div>
 
-            <p>{itemToUpgrade.name}</p>
+            <p className={classes.itemName}>{itemToUpgrade.name}</p>
 
             {upgradeState === 'win' ? (
               <Button className={classes.sellItemBtn} color='purple'>
@@ -164,16 +174,7 @@ export const UpgradeDevice = ({ upgradeItem, itemToUpgrade }: UpgradeDeviceProps
             ) : null}
           </div>
         ) : (
-          <div className={classes.itemPlaceholder}>
-            <Image
-              src='/img/upgrades/upgrade-gun-placeholder.svg'
-              width={163}
-              height={143}
-              alt='Пистолет'
-            />
-
-            <p>Выберите предмет для апгрейда</p>
-          </div>
+          placeholder
         )}
       </div>
     </div>

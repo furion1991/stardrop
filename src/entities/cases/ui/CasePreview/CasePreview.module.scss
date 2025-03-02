@@ -4,6 +4,12 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+
+  &:hover {
+    .image img {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 .image {
@@ -13,6 +19,10 @@
   align-items: center;
   width: 560px;
   height: 315px;
+
+  img {
+    transition: transform 0.3s;
+  }
 }
 
 .caseOpenLimits {
@@ -63,12 +73,14 @@
 
 .priceBtn {
   display: flex;
-  align-items: center;
-  gap: 2px;
   padding: 10px 18px;
   font-size: 21px;
   font-weight: 700;
   line-height: 21px;
+
+  & > span {
+    gap: 2px;
+  }
 }
 
 .oldPrice {
@@ -76,8 +88,6 @@
   top: -16px;
   left: calc(100% - 16px);
   display: flex;
-  align-items: center;
-  gap: 2px;
   padding: 8px 10px;
   border-radius: 10px;
   border: 1px solid var(--color-pink);
@@ -95,5 +105,9 @@
     height: 2px;
     margin-top: -1px;
     background: var(--color-pink);
+  }
+
+  & > span {
+    gap: 2px;
   }
 }

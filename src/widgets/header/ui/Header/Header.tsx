@@ -32,8 +32,15 @@ export const Header = () => {
 
         <div className={classes.bottomRight}>
           <Link href='/crash-rocket' className={classes.crashRocketLink}>
-            <Image src='/img/crash-rocket-bg.png' alt='Фон' priority fill />
-            <Image src='/img/crash-rocket-girl.png' alt='Девочка' priority fill />
+            <Image src='/img/crash-rocket-banner-bg.png' alt='Фон' quality={100} fill />
+
+            <Image
+              className={classes.girlImg}
+              src='/img/crash-rocket-banner-girl.png'
+              alt='Девочка'
+              quality={100}
+              fill
+            />
 
             <span>
               Краш <br /> Ракета

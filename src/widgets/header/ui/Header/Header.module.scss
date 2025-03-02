@@ -50,6 +50,13 @@
   position: relative;
   width: 240px;
   height: 100px;
+  overflow: hidden;
+
+  &:hover {
+    .girlImg {
+      transform: scale(1.1);
+    }
+  }
 
   span {
     position: absolute;
@@ -70,4 +77,8 @@
 
 .userEntry {
   margin-left: 32px;
+}
+
+.girlImg {
+  transition: transform 0.3s;
 }

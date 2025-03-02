@@ -4,6 +4,6 @@ export { FavoriteCase } from './ui/FavoriteCase/FavoriteCase'
 export { CasePreviewOpen } from './ui/CasePreviewOpen/CasePreviewOpen'
 export { CaseOpeningCondition } from './ui/CaseOpeningCondition/CaseOpeningCondition'
 export { LatestOpenCasesList } from './ui/LatestOpenCasesList/LatestOpenCasesList'
-export { CaseOpeningAnimation } from './ui/CaseOpeningAnimation/CaseOpeningAnimation'
+export { CaseRoulette } from './ui/CaseRoulette/CaseRoulette'
 
 export { useCase } from './model/useCase'

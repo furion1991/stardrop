@@ -50,9 +50,12 @@
 .openBtn {
   display: flex;
   gap: 5px;
-  padding: 19px 20px 20px;
+  min-width: 223px;
+  height: 60px;
+  padding: 0 20px;
   font-size: 19px;
   font-weight: 700;
+  box-sizing: border-box;
 }
 
 .quickOpenBtn {
@@ -61,4 +64,10 @@
   padding: 18px 24px;
   font-size: 16px;
   font-weight: 700;
+  opacity: 0.5;
+  transition: var(--transition);
+
+  &.active {
+    opacity: 1;
+  }
 }

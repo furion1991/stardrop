@@ -1,18 +1,20 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useParams } from 'next/navigation'
+import { motion } from 'motion/react'
 
-import { CaseLootList, CaseBeforeOpen, CaseAfterOpen } from '@/widgets/cases'
+import { CaseLootList, CaseBeforeOpen } from '@/widgets/cases'
 import { PageActions } from '@/shared/ui'
+import { CaseReopenActions, useOpenCase } from '@/features/cases'
 
-import { CaseOpeningAnimation, useCase } from '@/entities/cases'
+import { CaseRoulette, useCase } from '@/entities/cases'
 import { useUser } from '@/shared/hooks'
-import { useOpenCase } from '@/features/cases'
+import { useCaseItem } from '@/entities/loot'
 
 import classes from './CasePage.module.scss'
 
-type OpenCaseState = 'not-open' | 'opening' | 'opened'
+type OpenCaseState = 'not-open' | 'opened'
 
 export const CasePage = () => {
   const params = useParams<{ id: string }>()
@@ -21,19 +23,48 @@ export const CasePage = () => {
   const { user } = useUser()
   const [droppedLootItemId, setDroppedLootItemId] = useState('')
   const [openCaseState, setOpenCaseState] = useState<OpenCaseState>('not-open')
+  const [isQuickOpenActive, setQuickOpenActive] = useState(false)
+  const [isRouletteAnimationEnd, setRouletteAnimationEnd] = useState(false)
+
   const { data: caseData, isLoading: isCaseLoading } = useCase({ id: caseId ?? '' })
 
   const { mutate: openCase, isPending: isCaseOpening } = useOpenCase({
     onSuccess: ({ droppedLootItemId }) => {
       setDroppedLootItemId(droppedLootItemId)
-      setOpenCaseState('opening')
+      setOpenCaseState('opened')
     }
+  })
+
+  const { data: droppedLootItem, isLoading: isDroppedLootItemLoading } = useCaseItem({
+    itemId: droppedLootItemId
   })
 
   const handleCaseOpen = () => {
     if (!caseId || !user) return
 
+    setRouletteAnimationEnd(false)
     openCase({ caseId, userId: user.id })
+  }
+
+  const memoizedCaseRoulette = useMemo(() => {
+    if (!caseData) return
+
+    return openCaseState === 'opened' ? (
+      <div className={classes.caseRoulette}>
+        <CaseRoulette
+          quickOpen={isQuickOpenActive}
+          droppedItemId={droppedLootItemId}
+          lootItems={caseData.items}
+          onAnimationComplete={() => {
+            setRouletteAnimationEnd(true)
+          }}
+        />
+      </div>
+    ) : null
+  }, [isQuickOpenActive, droppedLootItemId, openCaseState, caseData])
+
+  if (!caseId || !caseData) {
+    return
   }
 
   return (
@@ -42,47 +73,59 @@ export const CasePage = () => {
 
       <div className={classes.wrapper}>
         <div className={classes.title}>
-          <h1>{caseData?.name}</h1>
+          <h1>{caseData.name}</h1>
           <p>Кейс</p>
         </div>
 
-        {caseId && caseData ? (
-          <div className={classes.caseOpen}>
-            {openCaseState === 'not-open' ? (
-              <CaseBeforeOpen
-                caseData={{
-                  id: caseId,
-                  name: caseData.name,
-                  openPrice: caseData.price,
-                  image: caseData.image,
-                  imageType: caseData.type
+        <div className={classes.caseOpen}>
+          {openCaseState === 'not-open' ? (
+            <CaseBeforeOpen
+              caseData={{
+                id: caseId,
+                name: caseData.name,
+                openPrice: caseData.price,
+                image: caseData.image,
+                imageType: caseData.type
+              }}
+              quickOpenActive={isQuickOpenActive}
+              isCaseOpening={isCaseOpening}
+              onCaseOpen={handleCaseOpen}
+              onCaseQuickOpen={() => {
+                setQuickOpenActive((value) => !value)
+              }}
+            />
+          ) : null}
+
+          {memoizedCaseRoulette}
+
+          {droppedLootItem && openCaseState === 'opened' ? (
+            <motion.div
+              className={classes.caseReopenAcitons}
+              initial={{ opacity: 0, y: 100 }}
+              animate={
+                isRouletteAnimationEnd
+                  ? {
+                      opacity: 1,
+                      y: 0
+                    }
+                  : undefined
+              }
+              transition={{
+                duration: 0.5,
+                ease: 'easeOut'
+              }}
+            >
+              <CaseReopenActions
+                itemSellPrice={droppedLootItem.sellPrice}
+                onCaseReopen={() => {
+                  setOpenCaseState('not-open')
                 }}
-                onCaseOpen={handleCaseOpen}
-                onCaseQuickOpen={handleCaseOpen}
+                onItemSell={() => {}}
+                onItemUpgrade={() => {}}
               />
-            ) : null}
-
-            {openCaseState === 'opening' && droppedLootItemId ? (
-              <div className={classes.caseRoulette}>
-                <CaseOpeningAnimation
-                  droppedItemId={droppedLootItemId}
-                  lootItems={caseData.items}
-                  onAnimationComplete={() => {
-                    setOpenCaseState('opened')
-                  }}
-                />
-              </div>
-            ) : null}
-
-            {openCaseState === 'opened' && droppedLootItemId ? (
-              <CaseAfterOpen
-                caseId={caseId}
-                droppedItemId={droppedLootItemId}
-                onCaseReopen={handleCaseOpen}
-              />
-            ) : null}
-          </div>
-        ) : null}
+            </motion.div>
+          ) : null}
+        </div>
 
         <section className={classes.caseLoot}>
           <h2>Содержимое кейса</h2>

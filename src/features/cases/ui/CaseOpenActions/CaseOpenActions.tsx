@@ -8,6 +8,8 @@ import classes from './CaseOpenActions.module.scss'
 type CaseOpenActionsProps = {
   casePrice: number
   casesQuantity: number
+  isCaseOpening: boolean
+  quickOpenActive: boolean
   onCaseOpen: () => void
   onCaseQuickOpen: () => void
   onCasesQuantityChange: (quantity: number) => void
@@ -16,6 +18,8 @@ type CaseOpenActionsProps = {
 export const CaseOpenActions = ({
   casePrice,
   casesQuantity,
+  isCaseOpening,
+  quickOpenActive,
   onCaseOpen,
   onCaseQuickOpen,
   onCasesQuantityChange
@@ -50,7 +54,13 @@ export const CaseOpenActions = ({
         })}
       </ul>
 
-      <Button className={classes.openBtn} type='button' boxShadow onClick={onCaseOpen}>
+      <Button
+        loading={isCaseOpening}
+        className={classes.openBtn}
+        type='button'
+        boxShadow
+        onClick={onCaseOpen}
+      >
         Открыть за{' '}
         <PriceWithCurrency
           image={{
@@ -63,7 +73,9 @@ export const CaseOpenActions = ({
       </Button>
 
       <Button
-        className={classes.quickOpenBtn}
+        className={cn(classes.quickOpenBtn, {
+          [classes.active]: quickOpenActive
+        })}
         type='button'
         color='purple'
         boxShadow

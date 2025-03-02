@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import cn from 'classnames'
 
-import { Button } from '@/shared/ui'
+import { Button, PriceWithCurrency } from '@/shared/ui'
 
 import classes from './CasePreview.module.scss'
 
@@ -31,6 +31,7 @@ export const CasePreview = ({
           src={image}
           alt={`Кейс ${name}`}
           fill
+          sizes='560px'
           style={{
             objectFit: 'contain'
           }}
@@ -58,11 +59,25 @@ export const CasePreview = ({
 
       <div className={classes.price}>
         <Button className={classes.priceBtn}>
-          {price} <Image src='/icons/logo-mini.svg' width={18.42} height={18} alt='логотип' />
+          <PriceWithCurrency
+            image={{
+              width: 18,
+              height: 18
+            }}
+          >
+            {price}
+          </PriceWithCurrency>
         </Button>
 
         <div className={classes.oldPrice}>
-          {oldPrice} <Image src='/icons/logo-mini.svg' width={12.42} height={12} alt='логотип' />
+          <PriceWithCurrency
+            image={{
+              width: 12,
+              height: 12
+            }}
+          >
+            {oldPrice}
+          </PriceWithCurrency>
         </div>
       </div>
     </div>

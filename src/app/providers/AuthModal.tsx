@@ -1,8 +1,11 @@
 'use client'
 
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useMutation } from '@tanstack/react-query'
 
 import { AuthModal } from '@/features/auth'
+import { confirmEmail } from '@/features/auth/api/auth'
 
 type AuthModalContextProps = {
   isOpen: boolean
@@ -13,7 +16,30 @@ type AuthModalContextProps = {
 export const AuthModalContext = createContext({} as AuthModalContextProps)
 
 export const AuthModalProvider = ({ children }: { children: React.ReactNode }) => {
+  const searchParams = useSearchParams()
+
   const [isAuthModalOpen, setAuthModalOpen] = useState(false)
+  const [email, setEmail] = useState('')
+
+  const verifyEmail = useMutation({
+    mutationFn: confirmEmail,
+    onSuccess: (_, { email }) => {
+      setAuthModalOpen(true)
+      setEmail(email)
+    }
+  })
+
+  useEffect(() => {
+    const email = searchParams?.get('email')
+    const token = searchParams?.get('token')
+
+    if (email && token) {
+      verifyEmail.mutate({
+        email,
+        token
+      })
+    }
+  }, [])
 
   return (
     <AuthModalContext.Provider
@@ -31,6 +57,7 @@ export const AuthModalProvider = ({ children }: { children: React.ReactNode }) =
 
       <AuthModal
         open={isAuthModalOpen}
+        verifiedEmail={email}
         onClose={() => {
           setAuthModalOpen(false)
         }}

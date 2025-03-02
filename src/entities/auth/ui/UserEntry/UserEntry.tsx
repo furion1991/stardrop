@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Popup from 'reactjs-popup'
 import { useRef, useState } from 'react'
 
-import { Button } from '@/shared/ui'
+import { Button, PriceWithCurrency } from '@/shared/ui'
 
 import { useAuthModal } from '@/shared/hooks'
 import { useUser } from '@/shared/hooks'
@@ -26,7 +26,7 @@ export const UserEntry = () => {
       <div className={classes.userEntry}>
         <Button className={classes.authBtn} boxShadow onClick={openAuthModal}>
           <span>
-            <Image src='/icons/fingerprint.svg' width={29} height={28.99} alt='Отпечаток пальца' />
+            <Image src='/icons/fingerprint.svg' width={31} height={31} alt='Отпечаток пальца' />
           </span>
           Войти
         </Button>
@@ -65,13 +65,15 @@ export const UserEntry = () => {
               <Image src='/icons/plus.svg' width={15} height={15} alt='Плюс' />
             </Link>
 
-            <div className={classes.balance}>
-              <span>{user.currentBalance}</span>
-
-              <span>
-                <Image src='/icons/logo-mini.svg' width={28} height={27} alt='Лого' />
-              </span>
-            </div>
+            <PriceWithCurrency
+              className={classes.balance}
+              image={{
+                width: 28,
+                height: 27
+              }}
+            >
+              {user.currentBalance}
+            </PriceWithCurrency>
 
             <div className={classes.avatar}>
               <Image src='/placeholders/avatar.png' width={55} height={55} alt='Аватарка' />

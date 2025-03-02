@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/shared/ui'
+import { Button, PriceWithCurrency } from '@/shared/ui'
 
 import { useUser } from '@/shared/hooks'
 
@@ -18,9 +18,15 @@ export const UserBalanceInfo = () => {
             <Image src='/icons/wallet-gradient.svg' width={30} height={30} alt='Кошелёк' />
           </div>
 
-          <span>{user?.currentBalance}</span>
-
-          <Image src='/icons/logo-mini.svg' width={26.99} height={26.38} alt='Лого' />
+          <PriceWithCurrency
+            className={classes.balance}
+            image={{
+              width: 26,
+              height: 26
+            }}
+          >
+            {user?.currentBalance}
+          </PriceWithCurrency>
         </div>
 
         <div className={classes.row}>

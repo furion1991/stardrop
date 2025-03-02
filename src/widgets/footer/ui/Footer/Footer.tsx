@@ -9,11 +9,10 @@ export const Footer = () => {
   const nav = [
     { label: 'Пользовательское соглашение', href: '/user-agreement' },
     { label: 'Анонсы', href: '/' },
-    { label: 'Контакты', href: '/' },
-    { label: 'FAQ', href: '/faq' },
     { label: 'Соглашение о приватности', href: '/' },
+    { label: 'Контакты', href: '/' },
     { label: 'Правила', href: '/' },
-    { label: 'Вопрос - ответ', href: '/' }
+    { label: 'Вопрос - ответ', href: '/faq' }
   ]
 
   return (

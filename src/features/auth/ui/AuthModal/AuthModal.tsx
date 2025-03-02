@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
 
 import { AuthModalBase } from '@/entities/auth'
 import { EmailForm } from '../EmailForm/EmailForm'
-import { CodeVerificationForm } from '../CodeVerificationForm/CodeVerificationForm'
 import { EnterPasswordForm } from '../EnterPasswordForm/EnterPasswordForm'
 import { SocialNetworksAuth } from '../SocialNetworksAuth/SocialNetworksAuth'
 import { CreatePasswordForm } from '../CreatePasswordForm/CreatePasswordForm'
@@ -13,22 +13,50 @@ import { PasswordResetSuccess } from '../PasswordResetSuccess/PasswordResetSucce
 
 import { useSignUp } from '../../model/useSignUp'
 import { useSignIn } from '../../model/useSignIn'
+import { resetPassword } from '../../api/auth'
+import { EmailVerification } from '../EmailVerification/EmailVerification'
+import { EmailVerificationSuccess } from '../EmailVerificationSuccess/EmailVerificationSuccess'
 
-type Step = 'email' | 'code' | 'password' | 'password-reset' | 'password-reset-success'
+type Step =
+  | 'email'
+  | 'password'
+  | 'password-reset'
+  | 'password-reset-success'
+  | 'email-verification'
+  | 'email-verification-success'
+
 type EmailData = { email: string; isEmailExist?: boolean }
 
 type AuthModalProps = {
   open: boolean
+  verifiedEmail?: string
   onClose: () => void
 }
 
-export const AuthModal = ({ open, onClose }: AuthModalProps) => {
+export const AuthModal = ({ open, verifiedEmail, onClose }: AuthModalProps) => {
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [isEmailExist, setEmailExist] = useState<boolean>(false)
   const [step, setStep] = useState<Step>('email')
 
   const signUp = useSignUp()
   const signIn = useSignIn()
+
+  const sendResetPasswordMail = useMutation({
+    mutationFn: resetPassword,
+    onSuccess: () => {
+      setEmail(email)
+      setStep('password-reset-success')
+    }
+  })
+
+  useEffect(() => {
+    if (verifiedEmail) {
+      setEmail(verifiedEmail)
+      setEmailExist(true)
+      setStep('password')
+    }
+  }, [verifiedEmail])
 
   const signInError =
     signIn.error && signIn.error.response?.data.error === 'Invalid Password'
@@ -38,16 +66,6 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
   const setEmailData = ({ email, isEmailExist }: EmailData) => {
     setEmail(email)
     setEmailExist(Boolean(isEmailExist))
-
-    if (isEmailExist) {
-      setStep('password')
-    } else {
-      setStep('code')
-    }
-  }
-
-  const toPasswordStep = (code: string) => {
-    console.log(code)
     setStep('password')
   }
 
@@ -56,12 +74,12 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
       case 'email':
         return
 
-      case 'code':
+      case 'password':
         setStep('email')
         return
 
-      case 'password':
-        setStep('email')
+      case 'email-verification':
+        setStep('password')
         return
 
       case 'password-reset':
@@ -78,26 +96,17 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
     signIn.mutate({ email, password })
   }
 
-  const signUpUser = (password: string) => {
-    signUp.mutate({ email, password })
-  }
-
-  const resetPassword = (email: string) => {
-    setEmail(email)
-    setStep('password-reset-success')
-  }
-
   return (
     <AuthModalBase
       open={open}
       SocialAuthSlot={<SocialNetworksAuth />}
-      stepBackAvailable={step !== 'email'}
+      stepBackAvailable={step !== 'email' && step === 'email-verification-success'}
       onStepBack={toPrevStep}
       onClose={onClose}
     >
       {step === 'email' ? <EmailForm onEmailSubmit={setEmailData} /> : null}
 
-      {step === 'code' ? <CodeVerificationForm onCodeSubmit={toPasswordStep} /> : null}
+      {/* {step === 'code' ? <CodeVerificationForm onCodeSubmit={toPasswordStep} /> : null} */}
 
       {step === 'password' && isEmailExist ? (
         <EnterPasswordForm
@@ -111,11 +120,38 @@ export const AuthModal = ({ open, onClose }: AuthModalProps) => {
       ) : null}
 
       {step === 'password' && !isEmailExist ? (
-        <CreatePasswordForm loading={signUp.isPending} onPasswordSubmit={signUpUser} />
+        <CreatePasswordForm
+          onPasswordSubmit={(password) => {
+            setPassword(password)
+            setStep('email-verification')
+          }}
+        />
+      ) : null}
+
+      {step === 'email-verification' ? (
+        <EmailVerification
+          isVerificationSending={signUp.isPending}
+          onVerificationSubmit={() => {
+            signUp.mutate({ email, password })
+          }}
+        />
+      ) : null}
+
+      {step === 'email-verification-success' ? (
+        <EmailVerificationSuccess
+          onNextStep={() => {
+            setStep('password')
+          }}
+        />
       ) : null}
 
       {step === 'password-reset' ? (
-        <PasswordResetForm loading={false} onPasswordReset={resetPassword} />
+        <PasswordResetForm
+          loading={sendResetPasswordMail.isPending}
+          onPasswordReset={(email) => {
+            sendResetPasswordMail.mutate(email)
+          }}
+        />
       ) : null}
 
       {step === 'password-reset-success' ? (

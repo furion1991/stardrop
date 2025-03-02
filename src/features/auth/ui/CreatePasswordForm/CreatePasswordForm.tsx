@@ -15,11 +15,10 @@ const schema = z.object({
 type FormSchema = z.infer<typeof schema>
 
 type CreatePasswordFormProps = {
-  loading: boolean
   onPasswordSubmit: (password: string) => void
 }
 
-export const CreatePasswordForm = ({ loading, onPasswordSubmit }: CreatePasswordFormProps) => {
+export const CreatePasswordForm = ({ onPasswordSubmit }: CreatePasswordFormProps) => {
   const useFormProps = useForm<FormSchema>({
     resolver: zodResolver(schema)
   })
@@ -43,12 +42,7 @@ export const CreatePasswordForm = ({ loading, onPasswordSubmit }: CreatePassword
           <TextField type='password' name='password' placeholder='Не менее 8 символов' />
         </div>
 
-        <Button
-          loading={loading}
-          className={authModalBaseClasses.submitBtn}
-          type='submit'
-          fullWidth
-        >
+        <Button className={authModalBaseClasses.submitBtn} type='submit' fullWidth>
           Создать аккаунт
         </Button>
 

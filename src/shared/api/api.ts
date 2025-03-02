@@ -10,6 +10,18 @@ export const API = axios.create({
 })
 
 createAuthRefreshInterceptor(API, () => API.post('/auth/refresh'), {
-  statusCodes: [401],
-  pauseInstanceWhileRefreshing: true
+  pauseInstanceWhileRefreshing: true,
+  shouldRefresh: (err) => {
+    if (err.status !== 401) return false
+
+    if (
+      err.response?.data &&
+      typeof err.response?.data === 'object' &&
+      'error' in err.response?.data
+    ) {
+      return err.response?.data.error === 'Invalid Password' ? false : true
+    }
+
+    return true
+  }
 })

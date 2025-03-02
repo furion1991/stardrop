@@ -2,12 +2,14 @@
 
 import Image from 'next/image'
 
-import { useUsersOnlineNumber } from '../../model/useUsersOnlineNumber'
+import { useSignalrData } from '@/shared/hooks'
 
 import classes from './CurrentOnlineNumber.module.scss'
 
 export const CurrentOnlineNumber = () => {
-  const { usersOnlineNumber } = useUsersOnlineNumber()
+  const {
+    data: { usersOnlineNumber }
+  } = useSignalrData()
 
   return (
     <div className={classes.currentOnlineNumber}>

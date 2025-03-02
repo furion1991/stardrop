@@ -5,8 +5,10 @@ import { Suspense } from 'react'
 import {
   AuthModalProvider,
   AuthProvider,
+  ErrorBoundary,
   QueryClientProvider,
-  SignalRProvider,
+  SignalrDataProvider,
+  SignalrProvider,
   UserProvider
 } from '@/app/providers'
 import { PageLayout } from '@/widgets/layout'
@@ -29,19 +31,23 @@ export default function RootLayout({
   return (
     <html lang='ru'>
       <body className={cn(fontExo.variable, fontExo2.variable, fontRepublicaMinor.variable)}>
-        <QueryClientProvider>
-          <AuthProvider>
-            <Suspense>
-              <UserProvider>
-                <AuthModalProvider>
-                  <SignalRProvider>
-                    <PageLayout>{children}</PageLayout>
-                  </SignalRProvider>
-                </AuthModalProvider>
-              </UserProvider>
-            </Suspense>
-          </AuthProvider>
-        </QueryClientProvider>
+        <ErrorBoundary>
+          <QueryClientProvider>
+            <SignalrProvider>
+              <SignalrDataProvider>
+                <Suspense>
+                  <AuthProvider>
+                    <UserProvider>
+                      <AuthModalProvider>
+                        <PageLayout>{children}</PageLayout>
+                      </AuthModalProvider>
+                    </UserProvider>
+                  </AuthProvider>
+                </Suspense>
+              </SignalrDataProvider>
+            </SignalrProvider>
+          </QueryClientProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )

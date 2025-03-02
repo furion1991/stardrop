@@ -88,15 +88,18 @@
 
   p {
     max-width: 170px;
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 17px;
+    line-height: 20px;
     text-align: center;
   }
 }
 
 .action {
   position: relative;
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   &.needAuth {
     margin-top: 470px;
@@ -109,8 +112,11 @@
 }
 
 .upgradeBtn {
-  width: 228px;
-  height: 75px;
+  position: absolute;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  width: 280px;
+  height: 90px;
   font-family: var(--font-exo);
   font-size: 26px;
   font-weight: 900;
@@ -134,4 +140,36 @@
   min-width: 166px;
   font-size: 14px;
   font-weight: 700;
+}
+
+p.itemName {
+  max-width: 200px;
+  font-family: var(--font-exo2);
+  font-weight: 700;
+}
+
+.placeholderImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+}
+
+@keyframes swaying {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.upgradeItemImage {
+  animation: swaying 4s ease-in-out infinite both;
 }

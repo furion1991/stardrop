@@ -31,7 +31,13 @@ export const LootItem = ({ className, image, rarity, price, name, slots }: LootI
       </div>
 
       <div className={classes.image}>
-        <Image src={image ?? '/placeholders/case-loot.png'} loading='eager' fill alt={name} />
+        <Image
+          src={image ?? '/placeholders/case-loot.png'}
+          loading='eager'
+          fill
+          sizes='300px'
+          alt={name}
+        />
       </div>
 
       <p className={classes.name}>{name}</p>
