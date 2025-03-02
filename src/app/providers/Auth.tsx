@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { mutate: authFromSocial } = useMutation({
     mutationFn: socialAuth,
     onSuccess: () => {
-      setAuth(true)
+      setAuth(() => true)
       router.replace(window.location.pathname)
     }
   })
