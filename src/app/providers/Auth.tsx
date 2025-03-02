@@ -1,6 +1,6 @@
 'use client'
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createContext, useState, useEffect } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -17,6 +17,7 @@ type AuthContextProps = {
 export const AuthContext = createContext({} as AuthContextProps)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const queryClient = useQueryClient()
   const [isAuth, setAuth] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -73,6 +74,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handleLogout = () => {
     logout()
+    queryClient.removeQueries({
+      queryKey: ['/me']
+    })
     setAuth(false)
 
     if (pathname === '/profile') {
