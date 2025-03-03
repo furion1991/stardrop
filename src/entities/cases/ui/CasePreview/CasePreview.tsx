@@ -31,7 +31,6 @@ export const CasePreview = ({
           src={image}
           alt={`Кейс ${name}`}
           fill
-          sizes='560px'
           style={{
             objectFit: 'contain'
           }}
