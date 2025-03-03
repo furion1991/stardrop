@@ -18,6 +18,9 @@ export const LatestOpenCases = () => {
     data: { latestOpenedCases, latestOpenedCasesTop }
   } = useSignalrData()
 
+  console.log('latestOpenedCases', latestOpenedCases)
+  console.log('latestOpenedCasesTop', latestOpenedCasesTop)
+
   return (
     <div className={classes.latestOpenCases}>
       <div className={classes.latestOpenCasesFilter}>
