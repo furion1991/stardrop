@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { AxiosError, AxiosResponse } from 'axios'
 
-import { useAuth, useAuthModal } from '@/shared/hooks'
+import { useAuth } from '@/shared/hooks'
 import { signIn } from '../api/auth'
 
 type SignInError = {
@@ -21,11 +21,14 @@ type AuthProps = {
   password: string
 }
 
-export const useSignIn = () => {
+type UseSignInProps = {
+  onSuccess: () => void
+}
+
+export const useSignIn = ({ onSuccess }: UseSignInProps) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { setAuth } = useAuth()
-  const { closeModal } = useAuthModal()
 
   const redirectURL = searchParams?.get('redirect_url')
 
@@ -33,7 +36,7 @@ export const useSignIn = () => {
     mutationFn: signIn,
     onSuccess: () => {
       setAuth(true)
-      closeModal()
+      onSuccess()
 
       if (redirectURL) {
         router.push(redirectURL)

@@ -1,17 +1,23 @@
 import type { NextConfig } from 'next'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 const nextConfig: NextConfig = {
   async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_BASE}/v1/:path*`
-      },
-      {
-        source: '/signalr/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_BASE}/:path*`
-      }
-    ]
+    if (isDev) {
+      return [
+        {
+          source: '/api/:path*',
+          destination: `${process.env.NEXT_PUBLIC_API_BASE}/v1/:path*`
+        },
+        {
+          source: '/signalr/:path*',
+          destination: `${process.env.NEXT_PUBLIC_API_BASE}/:path*`
+        }
+      ]
+    }
+
+    return []
   },
   images: {
     remotePatterns: [
@@ -21,7 +27,6 @@ const nextConfig: NextConfig = {
       }
     ]
   },
-
   experimental: {
     turbo: {
       rules: {

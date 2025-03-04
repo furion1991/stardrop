@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { FormProvider, useForm } from 'react-hook-form'
 
-import { Button, PageActions } from '@/shared/ui'
+import { Button, PageActions, TextField } from '@/shared/ui'
 import { UpgradeDevice } from '@/widgets/upgrades'
 import { LootItemsSelection } from '@/entities/loot'
 import { UpgradesFAQ } from '@/entities/upgrades'
@@ -11,6 +12,7 @@ import { UpgradesFAQ } from '@/entities/upgrades'
 import { useUser, useAuth } from '@/shared/hooks'
 
 import classes from './Upgrades.module.scss'
+import Image from 'next/image'
 
 type Item = {
   id: string
@@ -23,6 +25,9 @@ type Item = {
 export const UpgradesPage = () => {
   const [myItemToUpgrade, setMyItemToUpgrade] = useState<Item | null>(null)
   const [upgradeItem, setUpgradeItem] = useState<Item | null>(null)
+
+  const useFormProps = useForm()
+  const { watch } = useFormProps
 
   const { isAuth } = useAuth()
   const { user } = useUser()
@@ -86,6 +91,28 @@ export const UpgradesPage = () => {
               <div className={classes.itemsSelectContainer}>
                 <div className={classes.itemsSelectHeading}>
                   <p>Предметы</p>
+
+                  <div className={classes.itemsSearchContainer}>
+                    <FormProvider {...useFormProps}>
+                      <TextField
+                        className={classes.itemsSearchField}
+                        name='priceSearch'
+                        placeholder='Цена от'
+                        endAdornment={<span className={classes.endAdornment}>₽</span>}
+                      />
+
+                      <TextField
+                        className={classes.itemsSearchField}
+                        name='nameSearch'
+                        placeholder='Поиск по названию'
+                        endAdornment={
+                          <span className={classes.endAdornment}>
+                            <Image src='/icons/loupe.svg' width={17} height={17} alt='Лупа' />
+                          </span>
+                        }
+                      />
+                    </FormProvider>
+                  </div>
                 </div>
 
                 <div className={classes.itemsSelectContent}>

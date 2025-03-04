@@ -40,7 +40,12 @@ export const AuthModal = ({ open, verifiedEmail, onClose }: AuthModalProps) => {
   const [step, setStep] = useState<Step>('email')
 
   const signUp = useSignUp()
-  const signIn = useSignIn()
+  const signIn = useSignIn({
+    onSuccess: () => {
+      onClose()
+      setStep('email')
+    }
+  })
 
   const sendResetPasswordMail = useMutation({
     mutationFn: resetPassword,
@@ -92,15 +97,11 @@ export const AuthModal = ({ open, verifiedEmail, onClose }: AuthModalProps) => {
     }
   }
 
-  const signInUser = (password: string) => {
-    signIn.mutate({ email, password })
-  }
-
   return (
     <AuthModalBase
       open={open}
       SocialAuthSlot={<SocialNetworksAuth />}
-      stepBackAvailable={step !== 'email' && step === 'email-verification-success'}
+      stepBackAvailable={step !== 'email' && step !== 'email-verification-success'}
       onStepBack={toPrevStep}
       onClose={onClose}
     >
@@ -112,7 +113,9 @@ export const AuthModal = ({ open, verifiedEmail, onClose }: AuthModalProps) => {
         <EnterPasswordForm
           error={signInError}
           loading={signIn.isPending}
-          onPasswordSubmit={signInUser}
+          onPasswordSubmit={(password) => {
+            signIn.mutate({ email, password })
+          }}
           onPasswordReset={() => {
             setStep('password-reset')
           }}
