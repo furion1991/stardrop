@@ -1,5 +1,7 @@
 'use client'
 
+import { Suspense } from 'react'
+
 import { Header } from '@/widgets/header'
 import { Footer } from '@/widgets/footer'
 import { MainLoadingIndicator } from '@/shared/ui'
@@ -7,7 +9,6 @@ import { MainLoadingIndicator } from '@/shared/ui'
 import { useUser } from '@/shared/hooks'
 
 import classes from './PageLayout.module.scss'
-import { Suspense } from 'react'
 
 type PageLayoutProps = {
   children: React.ReactNode

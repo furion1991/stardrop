@@ -18,10 +18,11 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const queryClient = useQueryClient()
-  const [isAuth, setAuth] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
+
+  const [isAuth, setAuth] = useState(false)
 
   const { mutate: logout } = useMutation({
     mutationFn: signOut
@@ -76,9 +77,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handleLogout = () => {
     logout()
+
     queryClient.removeQueries({
       queryKey: ['/me']
     })
+
     setAuth(false)
 
     if (pathname === '/profile') {

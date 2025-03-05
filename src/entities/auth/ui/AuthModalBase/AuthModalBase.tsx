@@ -24,7 +24,6 @@ export const AuthModalBase = ({
   onStepBack = () => {},
   onClose
 }: AuthModalBaseProps) => {
-  console.log(stepBackAvailable)
   return (
     <Modal className={classes.modal} open={open} onClose={onClose}>
       {stepBackAvailable ? (
