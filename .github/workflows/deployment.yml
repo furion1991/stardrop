@@ -28,27 +28,28 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/stardrop_front_app:${{ env.TAG }}-${{ github.sha }}
   
 
-  delpoy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Set Image Tag
         id: tag
-        run: |
-          echo "TAG=prod" >> $GITHUB_ENV
+        run: echo "TAG=prod" >> $GITHUB_ENV
+
       - name: Deploy to remote server via SSH
         uses: appleboy/ssh-action@v1.0.3
         env:
-          GIT_SHA: ${{ env.TAG }}-${{ github.sha }}
+          GIT_SHA_FRONT: ${{ env.TAG }}-${{ github.sha }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
-          envs: GIT_SHA
+          envs: GIT_SHA_FRONT
           script: |
             cd stardrop
-            sed -i '/^GIT_SHA_FRONT=/d' .env && echo "GIT_SHA_FRONT=${GIT_SHA}" >> .env
+            # Обновляем только GIT_SHA_FRONT, НЕ ТРОГАЯ GIT_SHA
+            sed -i '/^GIT_SHA_FRONT=/d' .env && echo "GIT_SHA_FRONT=${GIT_SHA_FRONT}" >> .env
             docker compose down
             docker system prune -f --all
             docker compose pull
