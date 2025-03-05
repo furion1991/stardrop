@@ -25,7 +25,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuth, setAuth] = useState(false)
 
   const { mutate: logout } = useMutation({
-    mutationFn: signOut
+    mutationFn: signOut,
+    onSuccess: onLogoutSuccess
   })
 
   const { mutate: authFromSocial } = useMutation({
@@ -69,24 +70,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
+    if (!pathname) return
+
+    const protectedRoutes = ['/profile', '/deposit']
+    const isProtectedRoute = protectedRoutes.includes(pathname)
+
+    if (isAuth && pathname === '/auth-required') {
+      const redirectUrl = searchParams?.get('redirect_url')
+      router.replace(redirectUrl || '/')
+    }
+
+    if (!isAuth && isProtectedRoute) {
+      router.push(`/auth-required?redirect_url=${pathname}`)
+    }
+  }, [isAuth])
+
+  useEffect(() => {
     if (isAuth) return
 
     telegramAuth()
     vkAuth()
   }, [isAuth])
 
-  const handleLogout = () => {
-    logout()
-
-    queryClient.removeQueries({
-      queryKey: ['/me']
-    })
-
-    setAuth(false)
-
-    if (pathname === '/profile') {
+  function onLogoutSuccess() {
+    if (pathname === '/profile' || pathname === '/deposit') {
       router.push('/')
     }
+
+    queryClient.removeQueries({
+      queryKey: ['me']
+    })
   }
 
   const getTelegramAuthLink = () => {
@@ -153,7 +166,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setAuth,
         getTelegramAuthLink,
         getVkAuthLink,
-        logout: handleLogout
+        logout
       }}
     >
       {children}
