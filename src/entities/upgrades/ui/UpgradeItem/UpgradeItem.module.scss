@@ -48,10 +48,6 @@
     &:nth-of-type(1) {
       margin-top: 12px;
     }
-
-    &:nth-of-type(2) {
-      padding-top: 5px;
-    }
   }
 }
 
@@ -107,6 +103,41 @@
 
     p {
       color: #dd6b89;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .titles {
+    padding: 0 10px;
+    margin-top: 15px;
+  }
+
+  .items {
+    gap: 5px;
+    padding: 0 10px;
+    margin-top: 10px;
+  }
+
+  .chance,
+  .result {
+    height: 43px;
+  }
+
+  .upgradeInfo {
+    margin-top: 0;
+  }
+
+  .result {
+    border-radius: 0px 0 18px 0px;
+  }
+
+  .loot {
+    padding: 10px 5px;
+    border-radius: 15px;
+
+    & > p {
+      padding-top: 0;
     }
   }
 }

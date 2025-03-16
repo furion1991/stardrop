@@ -1,5 +1,6 @@
 .caseReopenActions {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 
   button {
@@ -22,6 +23,27 @@
 
     &:nth-of-type(3) {
       padding: 11.5px 13px;
+    }
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .caseReopenActions {
+    justify-content: center;
+
+    button {
+      height: 55px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .caseReopenActions {
+    gap: 15px;
+
+    button {
+      width: 100%;
     }
   }
 }

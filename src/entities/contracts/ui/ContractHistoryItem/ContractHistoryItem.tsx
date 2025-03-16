@@ -20,15 +20,15 @@ export const ContractHistoryItem = () => {
 
   return (
     <div className={classes.contractHistoryItem}>
-      <div className={classes.craftItems}>
-        <div className={classes.itemsForCraft}>
-          <LootItem
-            className={classes.craftResult}
-            rarity={LootRarity.RARE}
-            price={980}
-            name='Starned Corbern'
-          />
+      <div className={classes.items}>
+        <LootItem
+          className={classes.craftResult}
+          rarity={LootRarity.RARE}
+          price={980}
+          name='Starned Corbern'
+        />
 
+        <div className={classes.itemsForCraft}>
           {itemsForCraft.map(({ id, rarity }) => {
             return (
               <LootRarityBox key={id} className={classes.itemForCraft} rarity={rarity}>

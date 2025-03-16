@@ -88,3 +88,66 @@
   height: 65px;
   z-index: 8;
 }
+
+@media screen and (max-width: 1024px) {
+  .box {
+    max-width: 804px;
+    padding: 20px 30px 15px;
+  }
+
+  .contractItemsFillPanel {
+    margin: 0 50px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .box {
+    width: 100%;
+    max-width: calc(100% - 40px);
+  }
+
+  .boxBg {
+    max-width: calc(100% - 20px);
+  }
+
+  .contractItemsFillPanel {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .progressBar {
+    height: 10px;
+    margin-top: 15px;
+    border-radius: 9px;
+  }
+
+  .boxBg {
+    top: 44px;
+  }
+
+  .box {
+    padding: 10px 15px 10px;
+    border-radius: 6px;
+  }
+
+  .mainText {
+    font-size: 12px;
+  }
+
+  .tickLabel {
+    font-size: 8px;
+  }
+
+  .btn {
+    margin-top: 53px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .btn {
+    max-width: 100%;
+    height: 55px;
+    font-size: 18px;
+  }
+}

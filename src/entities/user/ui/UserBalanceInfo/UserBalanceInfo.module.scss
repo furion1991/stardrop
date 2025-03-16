@@ -45,11 +45,75 @@
     font-size: 18px;
     font-weight: 900;
     line-height: 20px;
+    white-space: nowrap;
   }
 }
 
 .balance {
   & > span {
     align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .userBalanceInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 30px;
+    gap: 16px;
+  }
+
+  .left {
+    flex-direction: row;
+    gap: 26px;
+  }
+
+  .balanceUpLink {
+    margin-left: 0;
+    width: 100%;
+
+    button {
+      width: 100%;
+      padding: 11px 28px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .row {
+    span {
+      font-size: 16px;
+      margin-left: 5px;
+    }
+  }
+
+  .balance {
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .currencyIcon {
+    width: 18px;
+    height: 20px;
+
+    img {
+      width: 18px;
+      height: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .userBalanceInfo {
+    padding: 20px;
+  }
+
+  .balanceUpLink {
+    button {
+      width: 100%;
+      padding: 17.5px 0;
+    }
   }
 }

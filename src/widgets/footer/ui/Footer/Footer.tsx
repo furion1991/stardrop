@@ -52,6 +52,21 @@ export const Footer = () => {
         </Button>
       </div>
 
+      <ul className={classes.navListMobile}>
+        {nav.map(({ label, href }) => {
+          return (
+            <li key={label}>
+              <Link href={href}>{label}</Link>
+            </li>
+          )
+        })}
+      </ul>
+
+      <p className={classes.companyCredentialsTextMobile}>
+        Company number 13246765, 16 John Nicholas Crescent, Ellesmere Port, Cheshire, United
+        Kingdom, CH65 2DL, +44 07308278693.
+      </p>
+
       <div className={classes.bgCharacter}>
         <Image src='/img/clash-of-clans-guy.png' width={492} height={300} alt='Персонаж' />
       </div>

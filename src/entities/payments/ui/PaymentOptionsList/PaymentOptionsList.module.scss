@@ -43,3 +43,23 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .paymentOptionsList {
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    gap: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .paymentOptionsList {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .paymentOptionsList {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    gap: 8px 10px;
+  }
+}

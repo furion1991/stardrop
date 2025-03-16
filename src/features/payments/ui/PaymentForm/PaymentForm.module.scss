@@ -76,3 +76,61 @@
   font-size: 20px;
   font-weight: 900;
 }
+
+@media screen and (max-width: 1024px) {
+  .formBox {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px 20px;
+    gap: 20px 24px;
+  }
+
+  .textField {
+    width: calc(50% - 12px);
+
+    &:nth-of-type(2) {
+      margin-top: 0;
+    }
+  }
+
+  .agreement {
+    margin-top: 0;
+  }
+
+  .paymentBtn {
+    max-width: 442px;
+    margin: 35px auto 0;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .formBox {
+    flex-direction: column;
+    padding: 15px 15px 20px;
+  }
+
+  .textField {
+    width: 100%;
+  }
+
+  .agreement {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .agreement {
+    p {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .paymentBtn {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 35px;
+    height: 55px;
+    font-size: 18px;
+  }
+}

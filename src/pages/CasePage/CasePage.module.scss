@@ -7,8 +7,7 @@
   max-width: 1486px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 72px;
-  padding-bottom: 85px;
+  padding: 72px 20px 85px;
 }
 
 .title {
@@ -60,4 +59,43 @@
   justify-content: center;
   width: 100%;
   margin-top: 40px;
+}
+
+@media screen and (max-width: 1526px) {
+  .wrapper {
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .caseLoot {
+    margin-top: 60px;
+  }
+
+  .caseLootList {
+    margin-top: 40px;
+  }
+
+  .wrapper {
+    padding-top: 53px;
+  }
+
+  .caseReopenAcitons {
+    margin-top: 31px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    padding-top: 115px;
+  }
+
+  .title {
+    h1 {
+      font-size: 24px;
+    }
+  }
+  .caseReopenAcitons {
+    margin-top: 30px;
+  }
 }

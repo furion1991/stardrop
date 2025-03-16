@@ -8,6 +8,8 @@ import { signOut, socialAuth } from '@/features/auth'
 
 type AuthContextProps = {
   isAuth: boolean
+  isAuthInitializing: boolean
+  setAuthInitializing: (value: boolean) => void
   setAuth: (value: boolean) => void
   getTelegramAuthLink: () => string
   getVkAuthLink: () => Promise<string>
@@ -23,6 +25,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const searchParams = useSearchParams()
 
   const [isAuth, setAuth] = useState(false)
+  const [isAuthInitializing, setAuthInitializing] = useState(true)
 
   const { mutate: logout } = useMutation({
     mutationFn: signOut,
@@ -70,7 +73,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    if (!pathname) return
+    if (!pathname || isAuthInitializing) return
 
     const protectedRoutes = ['/profile', '/deposit']
     const isProtectedRoute = protectedRoutes.includes(pathname)
@@ -83,7 +86,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (!isAuth && isProtectedRoute) {
       router.push(`/auth-required?redirect_url=${pathname}`)
     }
-  }, [isAuth])
+  }, [isAuth, isAuthInitializing])
 
   useEffect(() => {
     if (isAuth) return
@@ -163,6 +166,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     <AuthContext.Provider
       value={{
         isAuth,
+        isAuthInitializing,
+        setAuthInitializing,
         setAuth,
         getTelegramAuthLink,
         getVkAuthLink,

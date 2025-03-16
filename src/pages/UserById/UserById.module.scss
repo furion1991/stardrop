@@ -2,6 +2,7 @@
   max-width: 1450px;
   width: 100%;
   margin: 85px auto 0;
+  padding: 0 20px;
 }
 
 .userInfoPanel {
@@ -30,4 +31,75 @@
   width: 295px;
   height: 100%;
   flex-shrink: 0;
+}
+
+@media screen and (max-width: 1490px) {
+  .wrapper {
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .bestDrop,
+  .favoriteCase {
+    max-width: 225px;
+    width: 100%;
+    flex-shrink: 1;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .wrapper {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
+  .userInfoPanel {
+    padding: 25px 15px;
+    height: 229px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .userHistoryTopPanel {
+    padding: 20px 20px 17.5px;
+  }
+
+  .userInfoPanel {
+    height: 208px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .bestDrop,
+  .favoriteCase {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .userHistoryTopPanel {
+    padding: 0;
+  }
+
+  .userHistory {
+    background: none;
+  }
+
+  .wrapper {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .userInfoPanel {
+    height: auto;
+    padding: 20px 10px 20px 15px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    margin-top: 20px;
+  }
 }

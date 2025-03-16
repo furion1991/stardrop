@@ -19,10 +19,7 @@ export const WithdrawItem = ({ status }: WithdrawItemProps) => {
         </div>
       </div>
 
-      <div className={classes.itemInfo}>
-        <p>Melinor</p>
-        <p>Starned Corbem</p>
-      </div>
+      <p className={classes.itemName}>Starned Corbem</p>
 
       <p className={classes.price}>294</p>
 

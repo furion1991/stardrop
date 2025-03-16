@@ -8,6 +8,7 @@ import classes from './CasePreview.module.scss'
 type CasePreviewProps = {
   name: string
   image?: string
+  imageType?: 'FirstCategory' | 'SecondCategory'
   price: number
   oldPrice: number
   openLimit: number
@@ -17,6 +18,7 @@ type CasePreviewProps = {
 export const CasePreview = ({
   name,
   image = '/placeholders/case.png',
+  imageType = 'FirstCategory',
   price,
   oldPrice,
   openLimit,
@@ -26,7 +28,11 @@ export const CasePreview = ({
 
   return (
     <div className={classes.casePreview}>
-      <div className={classes.image}>
+      <div
+        className={cn(classes.image, {
+          [classes.SecondCategory]: imageType === 'SecondCategory'
+        })}
+      >
         <Image
           src={image}
           alt={`Кейс ${name}`}

@@ -6,14 +6,20 @@
   box-sizing: border-box;
 }
 
+.items {
+  display: flex;
+  gap: 17px;
+}
+
 .craftItems {
   display: flex;
   gap: 17px;
 }
 
 .craftResult {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 2;
+  width: 169px;
+  height: 164px;
+  flex-shrink: 0;
   font-size: 13.19px;
   padding: 10px 10px 19px;
 
@@ -32,8 +38,8 @@
 
 .itemsForCraft {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 80px);
-  grid-template-rows: repeat(auto-fit, 80px);
+  grid-template-columns: repeat(5, minmax(45px, 80px));
+  grid-template-rows: repeat(2, minmax(50px, 80px));
   gap: 8px 10px;
   width: 100%;
 }
@@ -76,5 +82,111 @@
     font-family: var(--font-exo);
     font-weight: 900;
     color: #f08a75;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .craftResult {
+    width: 127px;
+    height: 135px;
+  }
+
+  .itemsForCraft {
+    grid-template-rows: 65px 65px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .contractHistoryItem {
+    padding: 20px 10px 15px 15px;
+  }
+
+  .itemsForCraft {
+    gap: 5px 2.5px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .contractInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    background: none;
+    padding: 0;
+    margin-top: 15px;
+  }
+
+  .craftPrice,
+  .itemsNumber {
+    font-size: 16px;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  .craftResult {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .itemForCraft {
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .contractHistoryItem {
+    padding: 15px 10px;
+  }
+
+  .craftResult {
+    width: 97px;
+    height: 102px;
+
+    & > div {
+      &:nth-of-type(1) {
+        span {
+          font-size: 10px;
+
+          img {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+
+      &:nth-of-type(2) {
+        margin-top: 5px;
+        width: 72px;
+        height: 36px;
+      }
+    }
+
+    p:first-of-type {
+      font-size: 10px;
+      margin-top: auto;
+      padding-top: 0;
+    }
+  }
+
+  .itemsForCraft {
+    grid-template-rows: 50px 50px;
+
+    img {
+      width: 39px;
+      height: 20px;
+    }
+  }
+
+  .contractInfo {
+    margin-top: 10px;
+  }
+
+  .itemsNumber {
+    margin-top: 5px;
+  }
+
+  .items {
+    gap: 5px;
   }
 }

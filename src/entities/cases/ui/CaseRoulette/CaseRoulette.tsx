@@ -88,7 +88,7 @@ export const CaseRoulette = ({
   }
 
   return (
-    <div className={classes.CaseRoulette}>
+    <div className={classes.caseRoulette}>
       <div className={classes.rouletteContainer}>
         <motion.ul
           className={classes.roulette}

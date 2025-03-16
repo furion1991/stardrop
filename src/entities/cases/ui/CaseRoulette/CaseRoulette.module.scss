@@ -1,5 +1,6 @@
-.CaseRoulette {
+.caseRoulette {
   position: relative;
+  min-width: 1486px;
 
   &::before,
   &::after {
@@ -85,5 +86,11 @@
   &Bottom {
     bottom: -36px;
     transform: translateX(-50%) rotate(-90deg);
+  }
+}
+
+@media screen and (max-width: 1526px) {
+  .rouletteContainer {
+    right: 0;
   }
 }

@@ -1,18 +1,20 @@
 import Image from 'next/image'
+import cn from 'classnames'
 
 import classes from './IdCopier.module.scss'
 
 type IdCopierProps = {
   id: string
+  className?: string
 }
 
-export const IdCopier = ({ id }: IdCopierProps) => {
+export const IdCopier = ({ id, className }: IdCopierProps) => {
   const copyIdToClipboard = (id: string) => {
     navigator.clipboard.writeText(id)
   }
 
   return (
-    <div className={classes.idCopier}>
+    <div className={cn(classes.idCopier, className)}>
       ID: <span>{id}</span>
       <button
         type='button'

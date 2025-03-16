@@ -14,20 +14,23 @@ export const PopularCasesList = () => {
 
   return (
     <>
-      {casesData?.cases?.map(({ id, name, image, price, oldPrice, currentOpen, openLimit }) => {
-        return (
-          <Link key={id} href={`/cases/${id}`}>
-            <CasePreview
-              name={name}
-              image={image}
-              price={price}
-              oldPrice={oldPrice}
-              openLimit={openLimit}
-              openedCasesNumber={currentOpen}
-            />
-          </Link>
-        )
-      })}
+      {casesData?.cases?.map(
+        ({ id, name, image, price, oldPrice, currentOpen, openLimit, type }) => {
+          return (
+            <Link key={id} href={`/cases/${id}`}>
+              <CasePreview
+                name={name}
+                image={image}
+                imageType={type}
+                price={price}
+                oldPrice={oldPrice}
+                openLimit={openLimit}
+                openedCasesNumber={currentOpen}
+              />
+            </Link>
+          )
+        }
+      )}
     </>
   )
 }

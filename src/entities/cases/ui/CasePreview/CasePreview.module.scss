@@ -110,3 +110,60 @@
     gap: 2px;
   }
 }
+
+@media screen and (max-width: 690px) {
+  .casePreview {
+    &:hover {
+      .image.SecondCategory {
+        img {
+          transform: scale(1.8) translateY(-10px);
+        }
+      }
+    }
+  }
+
+  .image {
+    width: 175px;
+    height: 168px;
+
+    &.SecondCategory {
+      img {
+        transform: scale(1.8);
+      }
+    }
+  }
+
+  .name {
+    margin-top: 172px;
+    font-size: 16px;
+  }
+
+  .caseOpenLimits {
+    top: 140px;
+    border-radius: 6.799px;
+    padding: 6px 10px 4px;
+    font-size: 10px;
+  }
+
+  .price {
+    margin-top: 15px;
+  }
+
+  .priceBtn {
+    min-width: 80px;
+    padding: 4px 10px;
+    font-size: 16px;
+  }
+
+  .oldPrice {
+    padding: 1px 6px;
+    font-size: 10.52px;
+    border-radius: 6.799px;
+
+    &::before {
+      height: 1px;
+      width: calc(100% - 14px);
+      left: 7px;
+    }
+  }
+}

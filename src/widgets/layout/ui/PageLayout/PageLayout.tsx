@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import { Header } from '@/widgets/header'
 import { Footer } from '@/widgets/footer'
 import { MainLoadingIndicator } from '@/shared/ui'
+import { MobileNav } from '../MobileNav/MobileNav'
 
 import { useUser } from '@/shared/hooks'
 
@@ -24,6 +25,8 @@ export const PageLayout = ({ children }: PageLayoutProps) => {
       <Suspense fallback={<MainLoadingIndicator />}>
         <main>{!isUserLoading ? children : <MainLoadingIndicator />}</main>
       </Suspense>
+
+      <MobileNav />
 
       <Footer />
     </div>

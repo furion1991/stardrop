@@ -25,7 +25,7 @@ export const UserBalanceInfo = () => {
               height: 26
             }}
           >
-            {user?.currentBalance}
+            {user ? new Intl.NumberFormat('de-DE').format(user?.currentBalance) : 0}
           </PriceWithCurrency>
         </div>
 

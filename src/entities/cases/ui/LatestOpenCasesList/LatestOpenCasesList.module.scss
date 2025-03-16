@@ -146,3 +146,30 @@
     transform: rotate(-35deg);
   }
 }
+
+@media screen and (max-width: 760px) {
+  .lastOpenedCaseItem {
+    width: 100px;
+    height: 62px;
+
+    &::before,
+    &::after {
+      top: 58px;
+    }
+
+    p {
+      font-size: 8px;
+      width: 70px;
+      padding: 0;
+    }
+  }
+
+  .image {
+    margin-top: 8px;
+
+    img {
+      width: 31px;
+      height: 31px;
+    }
+  }
+}

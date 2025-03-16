@@ -14,7 +14,7 @@ export const UserContext = createContext({} as UserContextProps)
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const { data: user, isLoading: isUserLoading, refetch: refetchUser } = useMe()
-  const { isAuth, setAuth } = useAuth()
+  const { isAuth, setAuth, setAuthInitializing } = useAuth()
 
   // when /me returned 401 and user logged in
   useEffect(() => {
@@ -25,6 +25,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setAuth(Boolean(user))
+    setAuthInitializing(false)
   }, [user])
 
   return (

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import cn from 'classnames'
 
 import { UserAvatarUpload, UserNameChange } from '@/features/user'
 import { IdCopier } from '@/shared/ui'
@@ -52,12 +53,16 @@ export const UserAuthorizedMainInfo = () => {
             />
           )}
 
-          {user ? <IdCopier id={user.id} /> : null}
+          {user ? <IdCopier className={classes.idCopier} id={user.id} /> : null}
         </div>
 
         <div className={classes.balance}>
           <UserBalanceInfo />
         </div>
+      </div>
+
+      <div className={cn(classes.balance, classes.mobile)}>
+        <UserBalanceInfo />
       </div>
 
       <div className={classes.bestDrop}>

@@ -63,3 +63,36 @@
   height: 100%;
   overflow: hidden;
 }
+
+@media screen and (max-width: 1024px) {
+  .caseImage {
+    height: 312px;
+  }
+
+  .casePreviewOpen {
+    background: #060928;
+    border-radius: 15px;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .caseImage {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .caseImage {
+    height: 170px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .caseImage {
+    height: 150px;
+  }
+
+  .casePreviewOpen {
+    gap: 5px;
+  }
+}

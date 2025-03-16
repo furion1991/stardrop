@@ -2,6 +2,7 @@
   position: relative;
   max-width: 735px;
   width: 100%;
+  margin: 0 10px;
 }
 
 .backBtn {
@@ -114,4 +115,69 @@
   font-weight: 600;
   line-height: 19px;
   color: var(--color-error);
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    padding: 50px 50px 25px;
+    min-height: auto;
+  }
+
+  .socialAuth {
+    margin-top: 25px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .backBtn {
+    left: 10px;
+  }
+
+  .closeBtn {
+    right: 10px;
+  }
+
+  .content {
+    padding: 50px 15px 20px;
+    min-height: auto;
+
+    .submitBtn {
+      margin-top: 20px;
+      height: 50px;
+      font-size: 18px;
+    }
+  }
+
+  .agreement {
+    margin-top: 15px;
+    font-size: 12px;
+    line-height: 120%;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .inputRow {
+    margin-top: 25px;
+
+    & > div {
+      input {
+        padding: 9px 10px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .formError {
+    top: 36px;
+  }
+
+  .socialAuth {
+    & > p {
+      font-size: 16px;
+    }
+  }
 }
