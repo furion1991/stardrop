@@ -16,7 +16,7 @@ export const MobileNav = () => {
     { label: 'Кейсы', href: '/', iconSrc: '/icons/mobileNav/treasure-chest.svg' },
     { label: 'Краш', href: '/crash-rocket', iconSrc: '/icons/mobileNav/rocket.svg' },
     { label: 'Бонусы', href: '/bonuses', iconSrc: '/icons/mobileNav/gift-box.svg' },
-    { label: 'Барабан', href: '/wheel', iconSrc: '/icons/mobileNav/drum-wheel.svg' },
+    { label: 'Барабан', href: '/bonus-wheel', iconSrc: '/icons/mobileNav/drum-wheel.svg' },
     { label: 'Меню', iconSrc: '/icons/mobileNav/hamburger.svg' }
   ]
 
