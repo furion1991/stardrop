@@ -39,7 +39,9 @@ export const BonusesFAQ = () => {
   return (
     <div className={classes.bonusesFaq}>
       {faq.map(({ question, answer }) => (
-        <AccordionItem key={question} question={question} answer={answer} />
+        <AccordionItem key={question} heading={question}>
+          {answer}
+        </AccordionItem>
       ))}
     </div>
   )

@@ -43,7 +43,9 @@ export const FaqPage = () => {
 
         <div className={classes.faqList}>
           {faq.map(({ question, answer }) => (
-            <AccordionItem key={question} question={question} answer={answer} />
+            <AccordionItem key={question} heading={question}>
+              {answer}
+            </AccordionItem>
           ))}
         </div>
       </div>

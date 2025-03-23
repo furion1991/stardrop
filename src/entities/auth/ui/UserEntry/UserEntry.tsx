@@ -98,6 +98,10 @@ export const UserEntry = () => {
       </Link>
 
       <Link className={cn(classes.user, classes.asLink)} href='/profile'>
+        <div className={classes.balanceUpLink}>
+          <Image src='/icons/plus.svg' width={15} height={15} alt='Плюс' />
+        </div>
+
         <PriceWithCurrency
           className={classes.balance}
           image={{

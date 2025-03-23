@@ -90,7 +90,39 @@
 }
 
 @media screen and (max-width: 1526px) {
-  .rouletteContainer {
-    right: 0;
+  .caseRoulette {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1486px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .caseRoulette {
+    min-width: 840px;
+    width: 840px;
+  }
+
+  .roulette {
+    gap: 10px;
+  }
+
+  .lootItem {
+    max-width: 160px;
+    min-height: auto;
+    height: 170px;
+    padding: 0 10px;
+
+    img {
+      margin-top: 15px;
+      width: 100px;
+      height: 100px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
   }
 }

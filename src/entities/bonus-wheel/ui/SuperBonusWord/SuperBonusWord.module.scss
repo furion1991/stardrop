@@ -26,3 +26,50 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .superBonusWord {
+    gap: 5px;
+  }
+
+  .letterField {
+    width: 98px;
+    height: 98px;
+
+    span {
+      font-size: 62px;
+    }
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .superBonusWord {
+    gap: 2.28px;
+  }
+
+  .letterField {
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+
+    span {
+      font-size: 35px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .superBonusWord {
+    gap: 2.28px;
+  }
+
+  .letterField {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+
+    span {
+      font-size: 26px;
+    }
+  }
+}

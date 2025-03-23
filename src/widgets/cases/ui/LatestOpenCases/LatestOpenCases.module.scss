@@ -7,3 +7,9 @@
 .latestOpenCasesFilter {
   margin-top: 1px;
 }
+
+@media screen and (max-width: 1250px) {
+  .latestOpenCases {
+    gap: 2px;
+  }
+}

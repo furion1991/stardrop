@@ -48,9 +48,8 @@ export const Header = () => {
             <Logo withShadow />
           </div>
 
-          <div className={classes.socialNetworksList}>
-            <SocialNetworksLinksList />
-          </div>
+          <div className={classes.ellipseLeft} />
+          <div className={classes.ellipseRight} />
 
           <div className={classes.topLineRight}>
             <div className={classes.currentOnlineNumber}>

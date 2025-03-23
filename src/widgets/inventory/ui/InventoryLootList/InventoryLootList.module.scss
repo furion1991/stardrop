@@ -69,3 +69,9 @@
     grid-template-columns: repeat(auto-fit, 170px);
   }
 }
+
+@media screen and (max-width: 370px) {
+  .inventoryLootList {
+    grid-template-columns: repeat(2, minmax(auto, 170px));
+  }
+}

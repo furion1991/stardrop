@@ -60,7 +60,7 @@ export const BonusWheel = () => {
         ) : null}
 
         {wheelState === 'timeout' ? (
-          <div className={cn(classes.wheelStage, classes.canSpin)}>
+          <div className={cn(classes.wheelStage, classes.timeout)}>
             <Image
               src='/img/bonus-wheel/bonus-wheel-text.png'
               quality={100}

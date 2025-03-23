@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import cn from 'classnames'
-import { motion } from 'motion/react'
+import { motion, useAnimation } from 'motion/react'
+import { useEffect, useRef } from 'react'
 
 import { LootRarity, LootRarityBox } from '@/entities/loot'
 
@@ -28,6 +31,9 @@ export const CaseRoulette = ({
   quickOpen,
   onAnimationComplete
 }: CaseRouletteProps) => {
+  const controls = useAnimation()
+  const itemRef = useRef<HTMLDivElement>(null)
+  const rouletteRef = useRef<HTMLUListElement>(null)
   const QUICK_OPEN_DURATION = 1.5
   const DEFAULT_OPEN_DURATION = 12
   const ANIMATION_DURATION = quickOpen ? QUICK_OPEN_DURATION : DEFAULT_OPEN_DURATION
@@ -62,15 +68,15 @@ export const CaseRoulette = ({
     ]
   }
 
-  const getAnimationDistances = (lootItems: Loot[]) => {
+  const getAnimationDistances = (lootItems: Loot[], itemWidth: number, gap: number) => {
     // taking half of the items pool
     // ten blocks before picked item
     // random position of item
     // centered picked item
     // ten blocks after picked item
 
-    const itemWidth = 280
-    const gap = 20
+    if (!itemRef.current) return
+
     const blockWidth = itemWidth + gap
     const totalItems = lootItems.length
 
@@ -87,23 +93,33 @@ export const CaseRoulette = ({
     return [0, -secondDistance, -thirdDistance]
   }
 
+  useEffect(() => {
+    if (!itemRef.current || !rouletteRef.current) return
+
+    const itemWidth = itemRef.current.getBoundingClientRect().width
+    const gap = window.getComputedStyle(rouletteRef.current).gap
+
+    controls.start({
+      x: getAnimationDistances(lootItems, itemWidth, parseInt(gap)),
+      transition: {
+        duration: ANIMATION_DURATION,
+        visualDuration: ANIMATION_DURATION,
+        times: [0, 0.8, 1],
+        ease: [
+          [0.2, 1, 0.4, 1],
+          [0.4, 0.1, 0.4, 1]
+        ]
+      }
+    })
+  }, [itemRef, rouletteRef])
+
   return (
     <div className={classes.caseRoulette}>
       <div className={classes.rouletteContainer}>
         <motion.ul
+          ref={rouletteRef}
           className={classes.roulette}
-          animate={{
-            x: getAnimationDistances(lootItems),
-            transition: {
-              duration: ANIMATION_DURATION,
-              visualDuration: ANIMATION_DURATION,
-              times: [0, 0.8, 1],
-              ease: [
-                [0.2, 1, 0.4, 1],
-                [0.4, 0.1, 0.4, 1]
-              ]
-            }
-          }}
+          animate={controls}
           onAnimationStart={() => {
             setTimeout(() => {
               onAnimationComplete()
@@ -112,7 +128,12 @@ export const CaseRoulette = ({
         >
           {getRouletteItemsList(lootItems).map(({ id, image, name, rarity }, idx) => {
             return (
-              <LootRarityBox key={`${id}-${idx}`} rarity={rarity} className={classes.lootItem}>
+              <LootRarityBox
+                ref={itemRef}
+                key={`${id}-${idx}`}
+                rarity={rarity}
+                className={classes.lootItem}
+              >
                 <Image src={image} width={140} height={140} alt={name} loading='eager' />
 
                 <p>{name}</p>

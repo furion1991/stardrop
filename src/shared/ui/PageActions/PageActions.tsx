@@ -1,12 +1,17 @@
 import Image from 'next/image'
+import cn from 'classnames'
 
 import { LinkBack } from '../LinkBack/LinkBack'
 
 import classes from './PageActions.module.scss'
 
-export const PageActions = () => {
+type PageActionsProps = {
+  className?: string
+}
+
+export const PageActions = ({ className }: PageActionsProps) => {
   return (
-    <div className={classes.pageActions}>
+    <div className={cn(classes.pageActions, className)}>
       <LinkBack className={classes.linkBack} />
 
       <button type='button' className={classes.soundBtn}>

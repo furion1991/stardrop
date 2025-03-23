@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { Button, PageActions, TextField } from '@/shared/ui'
+import { AccordionItem, Button, PageActions, TextField } from '@/shared/ui'
 import { UpgradeDevice } from '@/widgets/upgrades'
 import { LootItemsSelection } from '@/entities/loot'
 import { UpgradesFAQ } from '@/entities/upgrades'
@@ -27,7 +27,6 @@ export const UpgradesPage = () => {
   const [upgradeItem, setUpgradeItem] = useState<Item | null>(null)
 
   const useFormProps = useForm()
-  const { watch } = useFormProps
 
   const { isAuth } = useAuth()
   const { user } = useUser()
@@ -46,11 +45,49 @@ export const UpgradesPage = () => {
       })
     : []
 
+  const userInventoryContent = (
+    <div className={classes.itemsSelectContent}>
+      {userInventoryItems.length ? (
+        <ul className={classes.itemsSelectList}>
+          <LootItemsSelection
+            items={userInventoryItems}
+            selectedItem={myItemToUpgrade}
+            onItemSelect={setMyItemToUpgrade}
+          />
+        </ul>
+      ) : (
+        <div className={classes.noInventoryItems}>
+          <p>У вас пока нет доступных предметов. Открывайте кейсы и апгрейдите предмет</p>
+
+          <Link href='/'>
+            <Button color='purple' borderRadius='medium'>
+              Открыть кейсы
+            </Button>
+          </Link>
+        </div>
+      )}
+    </div>
+  )
+
+  const itemsToUpgradeContent = (
+    <div className={classes.itemsSelectContent}>
+      <ul className={classes.itemsSelectList}>
+        <LootItemsSelection
+          items={userInventoryItems}
+          selectedItem={upgradeItem}
+          onItemSelect={setUpgradeItem}
+        />
+      </ul>
+    </div>
+  )
+
   return (
     <>
-      <PageActions />
+      <PageActions className={classes.pageActions} />
 
       <div className={classes.upgradesPage}>
+        <h1>Апгрейд предметов</h1>
+
         <div className={classes.upgradeMain}>
           <UpgradeDevice itemToUpgrade={upgradeItem} upgradeItem={myItemToUpgrade} />
         </div>
@@ -63,29 +100,7 @@ export const UpgradesPage = () => {
                   <p>Ваш инвентарь</p>
                 </div>
 
-                <div className={classes.itemsSelectContent}>
-                  {userInventoryItems.length ? (
-                    <ul className={classes.itemsSelectList}>
-                      <LootItemsSelection
-                        items={userInventoryItems}
-                        selectedItem={myItemToUpgrade}
-                        onItemSelect={setMyItemToUpgrade}
-                      />
-                    </ul>
-                  ) : (
-                    <div className={classes.noInventoryItems}>
-                      <p>
-                        У вас пока нет доступных предметов. Открывайте кейсы и апгрейдите предмет
-                      </p>
-
-                      <Link href='/'>
-                        <Button color='purple' borderRadius='medium'>
-                          Открыть кейсы
-                        </Button>
-                      </Link>
-                    </div>
-                  )}
-                </div>
+                {userInventoryContent}
               </div>
 
               <div className={classes.itemsSelectContainer}>
@@ -115,16 +130,24 @@ export const UpgradesPage = () => {
                   </div>
                 </div>
 
-                <div className={classes.itemsSelectContent}>
-                  <ul className={classes.itemsSelectList}>
-                    <LootItemsSelection
-                      items={userInventoryItems}
-                      selectedItem={upgradeItem}
-                      onItemSelect={setUpgradeItem}
-                    />
-                  </ul>
-                </div>
+                {itemsToUpgradeContent}
               </div>
+
+              <AccordionItem
+                className={classes.itemsSelectContainerMobile}
+                openClassName={classes.itemsSelectContainerMobileOpened}
+                heading='Интвентарь'
+              >
+                {userInventoryContent}
+              </AccordionItem>
+
+              <AccordionItem
+                className={classes.itemsSelectContainerMobile}
+                openClassName={classes.itemsSelectContainerMobileOpened}
+                heading='Интвентарь'
+              >
+                {itemsToUpgradeContent}
+              </AccordionItem>
             </section>
           ) : null}
 

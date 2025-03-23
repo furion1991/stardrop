@@ -7,11 +7,18 @@ import cn from 'classnames'
 import classes from './AccordionItem.module.scss'
 
 type AccordionItemProps = {
-  question: string
-  answer: string
+  className?: string
+  openClassName?: string
+  heading: string | React.ReactNode
+  children: React.ReactNode
 }
 
-export const AccordionItem = ({ question, answer }: AccordionItemProps) => {
+export const AccordionItem = ({
+  className,
+  openClassName,
+  heading,
+  children
+}: AccordionItemProps) => {
   const [isOpen, setOpen] = useState(false)
 
   const toggleOpen = () => {
@@ -19,14 +26,14 @@ export const AccordionItem = ({ question, answer }: AccordionItemProps) => {
   }
 
   return (
-    <div className={classes.accordionItem}>
+    <div className={cn(classes.accordionItem, className)}>
       <div
         className={cn(classes.accordionHeading, {
           [classes.open]: isOpen
         })}
         onClick={toggleOpen}
       >
-        <p>{question}</p>
+        {typeof heading === 'string' ? <p>{heading}</p> : heading}
 
         <button type='button' className={classes.accordionToggler}>
           <Image src='/icons/arrow-down-gray.svg' width={16} height={6} alt='Стрелка' />
@@ -34,11 +41,19 @@ export const AccordionItem = ({ question, answer }: AccordionItemProps) => {
       </div>
 
       <div
-        className={cn(classes.accordionContent, {
-          [classes.open]: isOpen
-        })}
+        className={cn(
+          classes.accordionContent,
+          {
+            [classes.open]: isOpen
+          },
+          openClassName
+            ? {
+                [openClassName]: isOpen
+              }
+            : null
+        )}
       >
-        <p>{answer}</p>
+        <div className={classes.content}>{children}</div>
       </div>
     </div>
   )

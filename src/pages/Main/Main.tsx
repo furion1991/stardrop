@@ -45,7 +45,7 @@ export const MainPage = () => {
         </div>
 
         <Link href='/' className={classes.tryNewModeBtn}>
-          <Button>Попробовать</Button>
+          <Button color='purple'>Попробовать</Button>
         </Link>
       </div>
 

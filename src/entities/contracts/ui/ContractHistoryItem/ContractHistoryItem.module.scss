@@ -38,7 +38,7 @@
 
 .itemsForCraft {
   display: grid;
-  grid-template-columns: repeat(5, minmax(45px, 80px));
+  grid-template-columns: repeat(5, minmax(40px, 80px));
   grid-template-rows: repeat(2, minmax(50px, 80px));
   gap: 8px 10px;
   width: 100%;
@@ -189,4 +189,7 @@
   .items {
     gap: 5px;
   }
+}
+
+@media screen and (max-width: 380px) {
 }

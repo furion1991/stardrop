@@ -12,5 +12,5 @@ export const BonusesList = () => {
       )
     })
 
-  return <ul className={classes.bonusesList}>{bonuses}</ul>
+  return <ul>{bonuses}</ul>
 }

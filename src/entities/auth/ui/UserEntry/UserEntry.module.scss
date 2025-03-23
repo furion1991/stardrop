@@ -83,9 +83,7 @@
   .navPopup {
     margin-top: 15px;
   }
-}
 
-@media screen and (max-width: 670px) {
   .user {
     display: none;
 
@@ -98,6 +96,26 @@
     display: none;
   }
 
+  .userEntry {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .user {
+    &.asLink {
+      display: flex;
+
+      .balanceUpLink {
+        display: none;
+      }
+    }
+  }
+
+  .balanceUpLink.separated {
+    display: flex;
+  }
+
   .balance {
     font-size: 12px;
 
@@ -105,10 +123,6 @@
       width: 13px;
       height: 13px;
     }
-  }
-
-  .balanceUpLink.separated {
-    display: flex;
   }
 
   .user {

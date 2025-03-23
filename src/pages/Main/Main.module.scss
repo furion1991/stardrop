@@ -49,6 +49,10 @@
     font-weight: 900;
     line-height: 30px;
     box-sizing: border-box;
+
+    &::before {
+      border-radius: 20px;
+    }
   }
 }
 
@@ -240,5 +244,15 @@
     top: -5px;
     left: 50px;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .popularCases,
+  .heroicBundles {
+    &List {
+      grid-template-columns: repeat(auto-fit, 150px);
+      gap: 20px 5px;
+    }
   }
 }
