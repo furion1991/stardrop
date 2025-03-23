@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const botId = process.env.NEXT_PUBLIC_TELEGRAM_BOT_ID
     const scope = 'user'
     const nonce = Math.random().toString().substring(7)
-    const redirectUri = 'https://stardrop.vercel.app'
+    const redirectUri = 'https://24cases.ru'
 
     return (
       `https://oauth.telegram.org/auth` +

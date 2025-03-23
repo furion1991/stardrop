@@ -48,7 +48,6 @@ jobs:
           envs: GIT_SHA_FRONT
           script: |
             cd stardrop
-            # Обновляем только GIT_SHA_FRONT, НЕ ТРОГАЯ GIT_SHA
             sed -i '/^GIT_SHA_FRONT=/d' .env && echo "GIT_SHA_FRONT=${GIT_SHA_FRONT}" >> .env
             docker compose down
             docker system prune -f --all
