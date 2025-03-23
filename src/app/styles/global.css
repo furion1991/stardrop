@@ -22,6 +22,11 @@ a {
   text-decoration: none;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 button {
   font-family: var(--font-exo);
   color: #fff;

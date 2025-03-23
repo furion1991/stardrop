@@ -30,17 +30,17 @@
 
 @media screen and (max-width: 600px) {
   .caseLootList {
-    grid-template-columns: repeat(2, minmax(auto, 269px));
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(auto-fit, 172px);
     gap: 5px;
   }
 
   .lootItem {
     min-height: 172px;
-    padding: 10px 15px 20px;
+    padding: 10px 10px 15px;
 
     p {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 }
